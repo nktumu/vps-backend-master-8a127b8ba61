@@ -1,5 +1,3 @@
-# Replace with your actual domain pointing to your Hostinger VPS IP
-# e.g. use.yourcompany.com
-{$USE_DOMAIN:use.yourcompany.com} {
-    reverse_proxy api:{$USE_SERVER_PORT:-7186}
+:80 {
+    reverse_proxy api:{$USE_SERVER_PORT:7186}
 }

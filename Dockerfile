@@ -8,17 +8,19 @@ EXPOSE 7186
 
 ARG WORKSPACE_BASE
 USER root
+RUN pip install --target=/opt/extra-packages setuptools
 RUN groupadd --gid 999 vupc-user && \
     useradd --system --create-home --home $WORKSPACE_BASE --uid 999 --gid vupc-user vupc-user
 USER vupc-user
 WORKDIR $WORKSPACE_BASE
 ENV PATH=$PATH:$WORKSPACE_BASE/.local/bin
+ENV PYTHONPATH=/opt/extra-packages
 RUN echo $PATH
 
 FROM base as pipenv
 RUN pip config set global.disable-pip-version-check true \
     && pip config set global.no-cache-dir false
-RUN pip install --user pipenv==2022.9.21
+RUN pip install --user pipenv==2022.9.21 setuptools
 
 FROM pipenv as dep_files
 # Installing dependencies is the slowest step, so do this before copying the lastest source
@@ -41,9 +43,11 @@ CMD ["cat", "Pipfile.lock"]
 
 FROM dep_files AS install
 RUN pipenv install --deploy
+RUN pipenv run pip install setuptools
 
 FROM install AS test
 RUN pipenv install --dev
+RUN pipenv run pip install setuptools
 ARG WORKSPACE
 WORKDIR $WORKSPACE
 COPY --chown=vupc-user:vupc-user . .

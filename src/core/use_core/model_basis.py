@@ -21,7 +21,7 @@ import io
 import json
 from typing import List, Tuple
 
-import pkg_resources
+import importlib.resources
 
 from .appliance import get_model_values
 from .utils import WindowSize
@@ -100,7 +100,7 @@ def dwa_data(profile):
         file_path = "conf/gurus/workload-attributes.json"
     else:
         file_path = f"conf/gurus/workload-attributes-{profile}.json"
-    attrs_in = pkg_resources.resource_stream(__name__, file_path)
+    attrs_in = importlib.resources.files(__package__).joinpath(file_path).open("rb")
     # Uncomment below when Universal Share is ready
     # return json.load(attrs_in)
 
@@ -179,7 +179,7 @@ def get_model_data(model):
 
 
 def get_flexscale_throughput() -> List[Tuple[float, List[float]]]:
-    csv_bytes = pkg_resources.resource_string(__name__, "conf/gurus/flexscale.csv")
+    csv_bytes = importlib.resources.files(__package__).joinpath("conf/gurus/flexscale.csv").read_bytes()
     csv_str = csv_bytes.decode("utf-8")
     reader = csv.DictReader(io.StringIO(csv_str), dialect="excel-tab")
     data = collections.defaultdict(list)

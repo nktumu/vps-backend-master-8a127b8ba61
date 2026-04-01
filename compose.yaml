@@ -14,6 +14,7 @@ services:
       target: deploy
     environment:
       CELERY_BROKER_URL: redis://broker:6379/0
+      PYTHONPATH: /opt/extra-packages:/data/jenkins/workspace/src/server:/data/jenkins/workspace/src/core
     command:
       - celery
       - --app=use_server.celery_app
@@ -32,6 +33,7 @@ services:
     environment:
       CELERY_BROKER_URL: redis://broker:6379/0
       USE_SERVER_PORT: ${USE_SERVER_PORT:-7186}
+      PYTHONPATH: /opt/extra-packages:/data/jenkins/workspace/src/server:/data/jenkins/workspace/src/core
     command:
       - python
       - -m
