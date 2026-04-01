@@ -1,0 +1,201 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "slp.json",
+    "title": "Storage Lifecycle Policy",
+    "description": "JSON schema for an SLP.  SLPs are a subschema for Workloads.",
+    "type": "object",
+    "required": [
+        "name",
+        "site_name",
+        "domain",
+        "backup_type"
+    ],
+    "allOf": [
+        {
+            "if": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "backup_type": {
+                                "const": "Local+DR"
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "backup_type": {
+                                "const": "Local+DR+LTR"
+                            }
+                        }
+                    }
+                ]
+            },
+            "then": {
+                "required": [
+                    "dr_dest"
+                ]
+            }
+        },
+        {
+            "if": {
+                "anyOf": [
+                    {
+                        "properties": {
+                            "backup_type": {
+                                "const": "Local+LTR"
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "backup_type": {
+                                "const": "LTR Only"
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "backup_type": {
+                                "const": "Local+DR+LTR"
+                            }
+                        }
+                    }
+                ]
+            },
+            "then": {
+                "required": [
+                    "ltr_dest"
+                ]
+            }
+        }
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "site_name": {
+            "type": "string"
+        },
+        "domain": {
+            "type": "string"
+        },
+        "dr_dest": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "string"
+            }
+        },
+        "backup_type": {
+            "type": "string",
+            "default": "Local Only",
+            "enum": [
+                "Local Only",
+                "Local+DR",
+                "Local+LTR",
+                "Local+DR+LTR",
+                "LTR Only"
+            ]
+        },
+        "ltr_dest": {
+            "type": "string",
+            "default": "access",
+            "enum": [
+                "access",
+                "other"
+            ]
+        },
+        "backup_intervals": {
+            "$anchor": "backup_intervals",
+            "title": "Backup Intervals",
+            "description": "Preferences for each site. Each element in this array specifies appliance selection preferences for one site.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "fulls_per_week": {
+                    "type": "integer",
+                    "default": "1",
+                    "description": "integer of full backups per week.\n"
+                },
+                "incrementals_per_week": {
+                    "type": "integer",
+                    "default": "5",
+                    "description": "integer of incremental backups per week.\n"
+                },
+                "log_backup_interval": {
+                    "type": "integer",
+                    "default": "15",
+                    "description": "Interval between log backups in minutes.\n"
+                }
+            }
+        },
+        "local_retention": {
+            "$ref": "#/$defs/retention"
+        },
+        "dr_retention": {
+            "$ref": "#/$defs/retention"
+        },
+        "cloud_retention": {
+            "$ref": "#/$defs/retention"
+        },
+        "log_backup_incremental_level": {
+            "type": "string",
+            "default": "auto",
+            "enum": [
+                "auto",
+                "none",
+                "differential",
+                "cumulative"
+            ]
+        },
+        "appliance_frontend_network": {
+            "$ref": "#/$defs/network_interface"
+        },
+        "appliance_ltr_network": {
+            "$ref": "#/$defs/network_interface"
+        },
+        "appliance_dr_network": {
+            "$ref": "#/$defs/network_interface"
+        }
+    },
+    "$defs": {
+        "retention": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "incremental": {
+                    "type": "integer",
+                    "default": 30,
+                    "description": "Retention interval for incremental backups in days.\n"
+                },
+                "weekly_full": {
+                    "type": "integer",
+                    "default": 4,
+                    "description": "Retention interval for weekly full backups in weeks.\n"
+                },
+                "monthly_full": {
+                    "type": "integer",
+                    "default": 6,
+                    "description": "Retention interval for monthly full backups in months.\n"
+                },
+                "annual_full": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Retention interval for annual full backups in years.\n"
+                }
+            }
+        },
+        "network_interface": {
+            "type": "string",
+            "enum": [
+                "auto",
+                "1GbE",
+                "10GbE Copper",
+                "10GbE SFP",
+                "25GbE SFP"
+            ],
+            "default": "auto"
+        }
+    }
+}

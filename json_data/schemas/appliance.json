@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "appliance.json",
+    "oneOf": [
+        {
+            "$ref": "#/$defs/nba"
+        },
+        {
+            "$ref": "#/$defs/flex"
+        },
+        {
+            "$ref": "#/$defs/flexscale"
+        },
+        {
+            "$ref": "#/$defs/access"
+        },
+        {
+            "$ref": "#/$defs/recoveryvault"
+        }
+    ],
+    "$defs": {
+        "nba": {
+            "title": "NBA Appliance",
+            "description": "JSON schema for NetBackup Appliance.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "family": {
+                    "const": "nba"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "config_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "flex": {
+            "title": "Flex Appliance",
+            "description": "JSON schema for Flex Appliance.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "family": {
+                    "const": "flex"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "config_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "flexscale": {
+            "title": "FlexScale Appliance",
+            "description": "JSON schema for FlexScale Appliance.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "family": {
+                    "const": "flexscale"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "config_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "access": {
+            "title": "Access Appliance",
+            "description": "JSON schema for Access Appliance.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "appliance": {
+                    "type": "object",
+                    "properties": {
+                        "family": {
+                            "const": "access"
+                            },
+                        "model": {
+                            "type": "string"
+                            }
+                    }
+
+                }
+
+            }
+        },
+        "recoveryvault": {
+            "title": "Recovery Vault",
+            "description": "JSON schema for Recovery Vault.",
+            "type": "str",
+            "additionalProperties": false,
+            "properties": {
+                "family": {
+                    "const": "recoveryvault"
+                }
+            }
+        }
+    }
+}

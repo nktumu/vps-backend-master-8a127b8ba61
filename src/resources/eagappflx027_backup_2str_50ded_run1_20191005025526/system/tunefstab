@@ -1,0 +1,4 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+system_default initial_extent_size=128
+system_default max_seqio_extent_size=16384
+# END ANSIBLE MANAGED BLOCK

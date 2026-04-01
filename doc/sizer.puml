@@ -1,0 +1,178 @@
+```plantuml
+@startuml
+    !include <logos/java>
+    !include <logos/mongodb>
+    !include <logos/flask>
+    !include <logos/python>
+
+    autonumber
+    autoactivate on
+
+    actor "Browser" as user
+    participant "**VMO-USE**\nWebsite\n\n<$java>" as ui #SkyBlue
+    participant "**VMO-USE**\nDatabase\n\n<$mongodb>" as db #SkyBlue
+    participant "**VPS Backend**\nREST API\n\n<$flask>" as api #SpringGreen
+    participant "**VPS Backend**\nCore module\n\n<$python>" as lib #SpringGreen
+    participant "SSO Server" as sso
+
+    activate user
+    group #LightGray User Authentication
+    user->ui #SkyBlue: user login
+        ui->sso: #verify credentials
+        return User Token
+    return successful login
+    end
+
+    |||
+
+    group #LightGray Get List of Valid Defaults & Ranges \
+        [this is done once to construct the UI and is cachable]
+    user->ui #SkyBlue: on load
+        group Query Workload Defaults
+            ui->api #SpringGreen: GET workload-type
+            autoactivate off
+            api->api: verify service auth Token
+            autoactivate on
+            api->lib #SpringGreen: get list of valid workloads
+            return Workload list
+            autoactivate off
+            api->api: generate etag
+            autoactivate on
+        return Workload list as JSON
+        destroy api
+        end
+
+        group Query Workload Ranges
+        ui->api #SpringGreen: GET workload-type/ranges
+            autoactivate off
+            api->api: verify service auth Token
+            autoactivate on
+            api->lib #SpringGreen: get ranges of workload attributes
+            return Workload ranges object
+            autoactivate off
+            api->api: generate etag
+            autoactivate on
+        return Workload list as JSON
+        destroy api
+        end
+
+        group Query SLP Defaults
+        ui->api #SpringGreen: GET /slps
+            autoactivate off
+            api->api: verify service auth Token
+            autoactivate on
+            api->lib #SpringGreen: new Core API for SLPs
+            return SLP list
+            autoactivate off
+            api->api: generate etag
+            autoactivate on
+        return SLP descriptor as JSON list
+        destroy api
+        end
+
+        group Query SLP Ranges
+        ui->api #SpringGreen: GET slps/ranges
+            autoactivate off
+            api->api: verify service auth Token
+            autoactivate on
+            api->lib #SpringGreen: get ranges of SLP attributes
+            return SLP ranges object
+            autoactivate off
+            api->api: generate etag
+            autoactivate on
+        return SLP list as JSON
+        destroy api
+        end
+
+        group Query Supported Appliances [optional\n \
+            list supported appliances\n \
+            support filtering by selection criteria\n \
+            ]
+        ui->api #SpringGreen: GET /skus
+            autoactivate off
+            api->api: verify service auth Token
+            autoactivate on
+            api->lib #SpringGreen: new Core API for test_appl_dict
+            return test_appl_dict
+            autoactivate off
+            api->api: generate etag
+            autoactivate on
+        return Appliance descriptor as JSON list
+        destroy api
+        end
+    return UI options
+    end
+
+    |||
+
+    group #LightGray Configure Sizing Scenario
+    user->ui #SkyBlue: user workload updates
+        group Verify Workload Input [optional, repeat as needed\n \
+            selects from pre-defined list\n \
+            supports overriding definition parameters\n \
+            supports custom if all parameters are provided\n \
+            for custom, method acts as a validity checker\n \
+            ]
+        ui->api #SpringGreen: GET /workload-type
+            autoactivate off
+            api->api: verify service auth Token
+            autoactivate on
+            api->lib #SpringGreen: Workload.__init__()
+            return Workload object
+        return Workload as JSON
+        destroy api
+        end
+        ui->db #SkyBlue: save updates to DB
+        return
+    return
+
+    user->ui #SkyBlue: user SLP updates
+        group Verify SLP Input [optional, repeat as needed\n \
+            selects from pre-defined list\n \
+            supports overriding definition parameters\n \
+            supports custom if all parameters are provided\n \
+            for custom, method acts as a validity checker\n \
+            ]
+        ui->api #SpringGreen: GET /slps
+            autoactivate off
+            api->api: verify service auth Token
+            autoactivate on
+            api->lib #SpringGreen: new Core API for SLPs
+            return SLP list
+        return SLP descriptor as JSON list
+        destroy api
+        end
+        ui->db #SkyBlue: save updates to DB
+        return
+    return
+
+    |||
+
+    group #LightGray Execute Sizing Job
+    user->ui #SkyBlue: start sizing
+        ui->db #SkyBlue: Query sizing config
+        return
+
+        group Packing [primary sizing command\n \
+            Flex = true/false\n \
+            Access = true/false\n \
+            ]
+        ui->api #SpringGreen: POST /size\n {workloads[], site_preferences[], horizon\n TO-DO: does site_preferences sufficiently describe MediaAppl and MasterAppl? }
+            autoactivate off
+            api->api: verify service auth Token
+            autoactivate on
+            api->lib #SpringGreen: SizerContext.pack()
+            return SizerResult
+        return SizerResult as JSON
+        destroy api
+        end
+
+        ui->db #SkyBlue: Save sizing results
+        return
+
+    return display results
+    end
+    deactivate user
+
+@enduml
+```

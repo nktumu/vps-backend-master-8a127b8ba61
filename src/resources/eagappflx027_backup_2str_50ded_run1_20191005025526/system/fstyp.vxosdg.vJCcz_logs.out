@@ -1,0 +1,15 @@
+vxfs
+magic a501fcf5  version 13  ctime Sat 05 Oct 2019 01:16:29 AM PDT
+volguid 6ef8f8e8-e748-11e9-967d-7c026a0c33d7
+logstart 0  logend 0
+bsize  8192 size  32768000 dsize  32768000  ninode 0  nau 0
+defiextsize 0  ilbsize 0  immedlen 96  ndaddr 10
+aufirst 0  emap 0  imap 0  iextop 0  istart 0
+bstart 0  femap 0  fimap 0  fiextop 0  fistart 0  fbstart 0
+nindir 2048  aulen 32768  auimlen 0  auemlen 1
+auilen 0  aupad 0  aublocks 32768  maxtier 15
+inopb 32  inopau 0  ndiripau 0  iaddrlen 1   bshift 13
+inoshift 5  bmask ffffe000  boffmask 1fff  checksum 102a6bd51
+oltext1 11  oltext2 10348  oltsize 1  checksum2 0
+free 32757622  ifree 0
+efree  0 1 1 2 2 0 1 0 1 1 1 0 1 0 1 1 1 1 2 1 2 2 2 2 0 0 0 0 0 0 0 0 

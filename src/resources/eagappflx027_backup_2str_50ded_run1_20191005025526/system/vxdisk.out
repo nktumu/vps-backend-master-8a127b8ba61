@@ -1,0 +1,4 @@
+DEVICE          TYPE            DISK         GROUP        STATUS
+localhost_disk_0 auto:none       -            -            online invalid
+localhost_disk_1 auto:LVM        -            -            LVM
+localhost_disk_2 auto:cdsdisk    B00C953960243F705D15FB7EE1  vxosdg       online

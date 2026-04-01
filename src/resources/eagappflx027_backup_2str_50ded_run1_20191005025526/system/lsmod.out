@@ -1,0 +1,115 @@
+Module                  Size  Used by
+binfmt_misc            17468  1 
+loop                   28072  2 
+macvlan                19239  0 
+xt_nat                 12681  22 
+veth                   13410  0 
+amf                   193414  11 
+vxcafs                 93586  0 
+fdd                    60056  1 
+vxportal               13254  1 
+vxfs                 4052632  11 fdd,vxportal,vxcafs
+dmpjbod                15477  1 
+dmpap                  15442  1 
+dmpaa                  15403  1 
+vxspec                 13261  10 
+vxio                 5094856  8 vxspec
+vxdmp                 530726  3 
+nfsv3                  43720  0 
+nfs_acl                12837  1 nfsv3
+rpcsec_gss_krb5        35549  0 
+auth_rpcgss            59415  1 rpcsec_gss_krb5
+nfsv4                 583067  0 
+dns_resolver           13140  1 nfsv4
+nfs                   261760  2 nfsv3,nfsv4
+lockd                  93952  2 nfs,nfsv3
+grace                  13515  1 lockd
+fscache                64984  2 nfs,nfsv4
+bonding               152656  0 
+vxglm                 327374  0 
+veki                   19214  11 amf,vxfs,vxio,dmpaa,dmpap,vxdmp,vxglm,dmpjbod,vxportal,vxspec
+ipt_MASQUERADE         12678  4 
+nf_nat_masquerade_ipv4    13412  1 ipt_MASQUERADE
+iptable_nat            12875  6 
+nf_conntrack_ipv4      15053  3 
+nf_defrag_ipv4         12729  1 nf_conntrack_ipv4
+nf_nat_ipv4            14115  1 iptable_nat
+xt_addrtype            12676  2 
+iptable_filter         12810  1 
+sunrpc                353103  13 nfs,rpcsec_gss_krb5,auth_rpcgss,lockd,nfsv3,nfsv4,nfs_acl
+xfs                   996949  3 
+iTCO_wdt               13480  0 
+iTCO_vendor_support    13718  1 iTCO_wdt
+skx_edac               13313  0 
+intel_powerclamp       14451  0 
+coretemp               13444  0 
+intel_rapl             19542  0 
+iosf_mbi               15582  1 intel_rapl
+kvm                   621392  0 
+irqbypass              13503  1 kvm
+crc32_pclmul           13133  0 
+ghash_clmulni_intel    13273  0 
+aesni_intel           189415  0 
+ipmi_ssif              29525  0 
+lrw                    13286  1 aesni_intel
+gf128mul               15139  1 lrw
+glue_helper            13990  1 aesni_intel
+ablk_helper            13597  1 aesni_intel
+cryptd                 21190  3 ghash_clmulni_intel,aesni_intel,ablk_helper
+pcspkr                 12718  0 
+joydev                 17389  0 
+mei_me                 32848  0 
+lpc_ich                21086  0 
+sg                     40721  0 
+i2c_i801               22637  0 
+mei                    91150  1 mei_me
+ipmi_si                59191  1 
+wmi                    21636  0 
+ipmi_devintf           17603  2 
+ipmi_msghandler        56032  3 ipmi_ssif,ipmi_devintf,ipmi_si
+acpi_power_meter       18104  0 
+acpi_pad              116316  0 
+xt_conntrack           12760  2 
+overlay                71964  6 
+nf_nat                 26583  3 nf_nat_ipv4,xt_nat,nf_nat_masquerade_ipv4
+nf_conntrack          137239  5 nf_nat,nf_nat_ipv4,xt_conntrack,nf_nat_masquerade_ipv4,nf_conntrack_ipv4
+libcrc32c              12644  3 xfs,nf_nat,nf_conntrack
+br_netfilter           22256  0 
+bridge                151336  1 br_netfilter
+stp                    12976  1 bridge
+llc                    14552  2 stp,bridge
+ip_tables              27126  2 iptable_filter,iptable_nat
+ext4                  579979  11 
+mbcache                14958  1 ext4
+jbd2                  107478  1 ext4
+sd_mod                 46281  8 
+crc_t10dif             12912  1 sd_mod
+crct10dif_generic      12647  0 
+i2c_algo_bit           13413  0 
+drm_kms_helper        179394  0 
+crct10dif_pclmul       14307  1 
+crct10dif_common       12595  3 crct10dif_pclmul,crct10dif_generic,crc_t10dif
+crc32c_intel           22094  1 
+syscopyarea            12529  1 drm_kms_helper
+sysfillrect            12701  1 drm_kms_helper
+sysimgblt              12640  1 drm_kms_helper
+fb_sys_fops            12703  1 drm_kms_helper
+ahci                   34056  1 
+ttm                   114635  0 
+mlx5_core             531572  0 
+libahci                31992  1 ahci
+i40e                  354807  0 
+megaraid_sas          145713  7 
+drm                   429744  2 ttm,drm_kms_helper
+libata                243133  2 ahci,libahci
+mlxfw                  18227  1 mlx5_core
+devlink                48345  1 mlx5_core
+ptp                    19231  2 i40e,mlx5_core
+pps_core               19057  1 ptp
+drm_panel_orientation_quirks    12957  1 drm
+nfit                   55016  1 skx_edac
+libnvdimm             147731  1 nfit
+dm_mirror              22289  0 
+dm_region_hash         20813  1 dm_mirror
+dm_log                 18411  2 dm_region_hash,dm_mirror
+dm_mod                124461  41 dm_log,dm_mirror

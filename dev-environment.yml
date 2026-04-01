@@ -1,0 +1,33 @@
+name: vupc
+channels:
+  - conda-forge   # conda-forge channel is free
+  - nodefaults    # default channels require paid license
+dependencies:
+  - black=24
+  - coverage
+  - flake8-copyright
+  - flake8
+  - git=2.34.1
+  - git-lfs=2.13.3
+  - hypothesis
+  - make
+  - nbval=0.9.6
+  - openapi-schema-validator
+  - openapi-spec-validator
+  - jsonschema
+  - pandoc=2.12
+  - pip
+  - pytest
+  - requests
+  - seaborn=0.11.2
+  - docx2pdf=0.1.8
+  - oletools
+  - panflute==2.1.3
+  - setuptools=80
+  - pip:
+      - pandoc-docx-pagebreak==0.0.2
+      - -e src/core
+      - -e src/xl
+      - -e src/xlwriter
+      - -e src/server
+      - -e src/devtools

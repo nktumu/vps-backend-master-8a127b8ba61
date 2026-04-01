@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "0c7df563-b5ff-4575-9bda-f57ac0e919e4",
+		"name": "USE API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Confluence flow",
+			"item": [
+				{
+					"name": "size",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"workloads\": [\n        {\n            \"name\": \"DC_20_VMware_A2\",\n            \"preset_type_id\": \"VMware\",\n            \"size\": {\n                \"value\": 5,\n                \"unit\": \"GiB\"\n            },\n            \"number_of_clients\": 20,\n            \"workload_isolation\": false,\n            \"universal_share\": false,\n            \"slp\": {\n                \"name\": \"default\",\n                \"domain\": \"Domain-1\",\n                \"site_name\": \"DC1\",\n                \"dr_dest\": [\n                    \"Slp1\"\n                ],\n                \"backup_type\": \"Local+DR\",\n                \"log_backup_incremental_level\": \"auto\",\n                \"appliance_ltr_network\": \"auto\",\n                \"backup_intervals\": {\n                    \"fulls_per_week\": 1,\n                    \"incrementals_per_week\": 5,\n                    \"log_backup_interval\": 15\n                },\n                \"local_retention\": {\n                    \"incremental\": 30,\n                    \"weekly_full\": 4,\n                    \"monthly_full\": 6,\n                    \"annual_full\": 0\n                },\n                \"dr_retention\": {\n                    \"incremental\": 0,\n                    \"weekly_full\": 0,\n                    \"monthly_full\": 0,\n                    \"annual_full\": 1\n                },\n                \"cloud_retention\": {\n                    \"incremental\": 0,\n                    \"weekly_full\": 0,\n                    \"monthly_full\": 0,\n                    \"annual_full\": 0\n                }\n            }\n        },\n        {\n            \"name\": \"DC_20_VMware_A2_2\",\n            \"preset_type_id\": \"VMware\",\n            \"size\": {\n                \"value\": 5,\n                \"unit\": \"GiB\"\n            },\n            \"number_of_clients\": 20,\n            \"workload_isolation\": false,\n            \"universal_share\": false,\n            \"slp\": {\n                \"name\": \"default\",\n                \"domain\": \"Domain-2\",\n                \"site_name\": \"DC2\",\n                \"backup_type\": \"Local+DR\",\n                \"dr_dest\": [\n                    \"Slp1\"\n                ],\n                \"log_backup_incremental_level\": \"auto\",\n                \"appliance_ltr_network\": \"auto\",\n                \"backup_intervals\": {\n                    \"fulls_per_week\": 1,\n                    \"incrementals_per_week\": 5,\n                    \"log_backup_interval\": 15\n                },\n                \"local_retention\": {\n                    \"incremental\": 30,\n                    \"weekly_full\": 4,\n                    \"monthly_full\": 6,\n                    \"annual_full\": 0\n                },\n                \"dr_retention\": {\n                    \"incremental\": 0,\n                    \"weekly_full\": 0,\n                    \"monthly_full\": 0,\n                    \"annual_full\": 1\n                },\n                \"cloud_retention\": {\n                    \"incremental\": 0,\n                    \"weekly_full\": 0,\n                    \"monthly_full\": 0,\n                    \"annual_full\": 0\n                }\n            }\n        }\n    ],\n    \"site_preferences\": [\n        {\n            \"domain\": \"Domain-1\",\n            \"site_name\": \"DC1\",\n            \"appliance_model\": \"5150\",\n            \"appliance_config\": \"5150 15TB\"\n        },\n        {\n            \"domain\": \"Domain-2\",\n            \"site_name\": \"DC2\",\n            \"appliance_model\": \"5150\",\n            \"appliance_config\": \"5150 15TB\"\n        },\n        {\n            \"domain\": \"Domain-1\",\n            \"site_name\": \"Slp1\",\n            \"appliance_model\": \"5150\",\n            \"appliance_config\": \"5150 15TB\"\n        },\n        {\n            \"domain\": \"Domain-2\",\n            \"site_name\": \"Slp1\",\n            \"appliance_model\": \"5150\",\n            \"appliance_config\": \"5150 15TB\"\n        }\n    ],\n    \"horizon\": {\n        \"num_years\": 5,\n        \"planning_year\": 3\n    }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{v}}/size?{\"workloads\"= [{\"name\": \"DC_20_VMware_A2\", \"type\": \"VMware\", \"size\": {\"value\": 5, \"unit\": \"GiB\"}, \"number_of_clients\": 20, \"storage_lifecycle_policy\": \"default\", \"workload_isolation\": false, \"universal_share\": false, \"domain\": \"Domain-1\", \"site_name\": \"DC1\", \"backup_type\": \"Local+DR\", \"dr_dest\": [\"Slp1\"], \"backup_intervals\": {\"fulls_per_week\": 1, \"incrementals_per_week\": 5, \"log_backup_interval\": 15}, \"local_retention\": {\"incremental\": 30, \"weekly_full\": 4, \"monthly_full\": 6, \"annual_full\": 0}, \"dr_retention\": {\"incremental\": 0, \"weekly_full\": 0, \"monthly_full\": 0, \"annual_full\": 1}, \"cloud_retention\": {\"incremental\": 0, \"weekly_full\": 0, \"monthly_full\": 0, \"annual_full\": 0}, \"log_backup_incremental_level\": \"auto\", \"appliance_ltr_network\": \"auto\"}, {\"name\": \"DC_20_VMware_A2_2\", \"type\": \"VMware\", \"size\": {\"value\": 5, \"unit\": \"GiB\"}, \"number_of_clients\": 20, \"storage_lifecycle_policy\": \"default\", \"workload_isolation\": false, \"universal_share\": false, \"domain\": \"Domain-2\", \"site_name\": \"DC2\", \"backup_type\": \"Local+DR\", \"dr_dest\": [\"Slp1\"], \"backup_intervals\": {\"fulls_per_week\": 1, \"incrementals_per_week\": 5, \"log_backup_interval\": 15}, \"local_retention\": {\"incremental\": 30, \"weekly_full\": 4, \"monthly_full\": 6, \"annual_full\": 0}, \"dr_retention\": {\"incremental\": 0, \"weekly_full\": 0, \"monthly_full\": 0, \"annual_full\": 1}, \"cloud_retention\": {\"incremental\": 0, \"weekly_full\": 0, \"monthly_full\": 0, \"annual_full\": 0}, \"log_backup_incremental_level\": \"auto\", \"appliance_ltr_network\": \"auto\"}], \"site_preferences\": [{\"domain\": \"Domain-1\", \"site_name\": \"DC1\", \"appliance_model\": \"5150\", \"appliance_config\": \"5150 15TB\"}, {\"domain\": \"Domain-2\", \"site_name\": \"DC2\", \"appliance_model\": \"5150\", \"appliance_config\": \"5150 15TB\"}, {\"domain\": \"Domain-1\", \"site_name\": \"Slp1\", \"appliance_model\": \"5150\", \"appliance_config\": \"5150 15TB\"}, {\"domain\": \"Domain-2\", \"site_name\": \"Slp1\", \"appliance_model\": \"5150\", \"appliance_config\": \"5150 15TB\"}], \"horizon\": {\"num_years\": 5, \"planning_year\": 3}}",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{v}}",
+								"size"
+							],
+							"query": [
+								{
+									"key": "{\"workloads\"",
+									"value": " [{\"name\": \"DC_20_VMware_A2\", \"type\": \"VMware\", \"size\": {\"value\": 5, \"unit\": \"GiB\"}, \"number_of_clients\": 20, \"storage_lifecycle_policy\": \"default\", \"workload_isolation\": false, \"universal_share\": false, \"domain\": \"Domain-1\", \"site_name\": \"DC1\", \"backup_type\": \"Local+DR\", \"dr_dest\": [\"Slp1\"], \"backup_intervals\": {\"fulls_per_week\": 1, \"incrementals_per_week\": 5, \"log_backup_interval\": 15}, \"local_retention\": {\"incremental\": 30, \"weekly_full\": 4, \"monthly_full\": 6, \"annual_full\": 0}, \"dr_retention\": {\"incremental\": 0, \"weekly_full\": 0, \"monthly_full\": 0, \"annual_full\": 1}, \"cloud_retention\": {\"incremental\": 0, \"weekly_full\": 0, \"monthly_full\": 0, \"annual_full\": 0}, \"log_backup_incremental_level\": \"auto\", \"appliance_ltr_network\": \"auto\"}, {\"name\": \"DC_20_VMware_A2_2\", \"type\": \"VMware\", \"size\": {\"value\": 5, \"unit\": \"GiB\"}, \"number_of_clients\": 20, \"storage_lifecycle_policy\": \"default\", \"workload_isolation\": false, \"universal_share\": false, \"domain\": \"Domain-2\", \"site_name\": \"DC2\", \"backup_type\": \"Local+DR\", \"dr_dest\": [\"Slp1\"], \"backup_intervals\": {\"fulls_per_week\": 1, \"incrementals_per_week\": 5, \"log_backup_interval\": 15}, \"local_retention\": {\"incremental\": 30, \"weekly_full\": 4, \"monthly_full\": 6, \"annual_full\": 0}, \"dr_retention\": {\"incremental\": 0, \"weekly_full\": 0, \"monthly_full\": 0, \"annual_full\": 1}, \"cloud_retention\": {\"incremental\": 0, \"weekly_full\": 0, \"monthly_full\": 0, \"annual_full\": 0}, \"log_backup_incremental_level\": \"auto\", \"appliance_ltr_network\": \"auto\"}], \"site_preferences\": [{\"domain\": \"Domain-1\", \"site_name\": \"DC1\", \"appliance_model\": \"5150\", \"appliance_config\": \"5150 15TB\"}, {\"domain\": \"Domain-2\", \"site_name\": \"DC2\", \"appliance_model\": \"5150\", \"appliance_config\": \"5150 15TB\"}, {\"domain\": \"Domain-1\", \"site_name\": \"Slp1\", \"appliance_model\": \"5150\", \"appliance_config\": \"5150 15TB\"}, {\"domain\": \"Domain-2\", \"site_name\": \"Slp1\", \"appliance_model\": \"5150\", \"appliance_config\": \"5150 15TB\"}], \"horizon\": {\"num_years\": 5, \"planning_year\": 3}}"
+								}
+							]
+						},
+						"description": "Mimics the call from pytest 'test_size_route'"
+					},
+					"response": []
+				},
+				{
+					"name": "slps (all)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{v}}/slps",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{v}}",
+								"slps"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "workload-type (all)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{v}}/workload-type",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{v}}",
+								"workload-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "skus (all)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{v}}/skus",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{v}}",
+								"skus"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{scheme}}://{{host}}:{{port}}/healthcheck",
+					"protocol": "{{scheme}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "workload-type (testWorkload)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{scheme}}://{{host}}:{{port}}/{{v}}/workload-type/testWorkload",
+					"protocol": "{{scheme}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{v}}",
+						"workload-type",
+						"testWorkload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "workload-type (notPresentWorkload)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{scheme}}://{{host}}:{{port}}/{{v}}/workload-type/notPresentWorkload",
+					"protocol": "{{scheme}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{v}}",
+						"workload-type",
+						"notPresentWorkload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "slps (testSlp)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{scheme}}://{{host}}:{{port}}/{{v}}/slps/testSlp",
+					"protocol": "{{scheme}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{v}}",
+						"slps",
+						"testSlp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "slps (notPresentSlp)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{scheme}}://{{host}}:{{port}}/{{v}}/slps/notPresentSlp",
+					"protocol": "{{scheme}}",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{v}}",
+						"slps",
+						"notPresentSlp"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "v",
+			"value": "v1"
+		}
+	]
+}

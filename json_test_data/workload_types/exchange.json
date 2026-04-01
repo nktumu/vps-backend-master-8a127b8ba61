@@ -1,0 +1,12 @@
+{
+    "name": "Exchange",
+    "annual_growth_rate": 0.2,
+    "daily_change_rate": 0.05,
+    "initial_dedup_rate": 0.7,
+    "dedup_rate": 0.85,
+    "addl_full_dedup_rate": 0.85,
+    "num_files": 10000,
+    "num_channels": 0,
+    "files_per_channel": 1,
+    "log_backup_capable": false
+}

@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$defs": {
+        "size": {
+            "type": "object",
+            "required": [
+                "value",
+                "unit"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "value": {
+                    "type": "number"
+                },
+                "unit": {
+                    "type": "string",
+                    "enum": [
+                        "KiB",
+                        "MiB",
+                        "GiB",
+                        "TiB",
+                        "PiB"
+                    ]
+                }
+            }
+        },
+        "percentage": {
+            "type": "number",
+            "maximum": 1,
+            "minimum": 0
+        },
+        "error": {
+            "type": "object",
+            "required": [
+                "errors",
+                "origin"
+            ],
+            "additionalProperties": true,
+            "properties": {
+                "$schema": {
+                    "$ref": "#/$defs/$schema"
+                },
+                "errors": {
+                    "description": "Error message(s) from the app",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "origin": {
+                    "description": "Function where the error occurred",
+                    "type": "string"
+                }
+            }
+        },
+        "horizon": {
+            "$anchor": "horizon",
+            "description": "Description of the time horizon for the sizing effort",
+            "type": "object",
+            "required": [
+                "num_years",
+                "planning_year"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "num_years": {
+                    "description": "Number of years to project usage out to.  Appliance utilization will be reported up to these many years.",
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "planning_year": {
+                    "description": "Year for which the appliances should be sized.",
+                    "type": "integer",
+                    "minimum": 1
+                }
+            }
+        },
+        "applianceSummaryObject": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/size"
+            }
+        },
+        "$schema": {
+            "type": "string",
+            "description": "Setting this optional property in a JSON file allows for editor auto-validation"
+        }
+    }
+}

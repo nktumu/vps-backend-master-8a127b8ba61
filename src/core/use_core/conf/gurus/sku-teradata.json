@@ -1,0 +1,143 @@
+{
+    "labels": {
+        "name": "Name",
+        "model": "Model",
+        "shelves": "Shelves",
+        "shelf_size": "Shelf Size",
+        "capacity": "Capacity",
+        "shelf_capacity": "Shelf Capacity",
+        "calculated_capacity": "Calculated Capacity",
+        "number_of_appliance_drives": "Number of Appliance Drives",
+        "drives_per_shelf": "Drives per Shelf",
+        "number_of_shelf_drives": "Number of Shelf Drives",
+        "number_of_total_drives": "Number of Total Drives",
+        "number_of_calculated_drives": "Number of Calculated Drives ",
+        "drive_size": "Drive Size",
+        "memory": "Memory",
+        "io_config": "IO_Config",
+        "one_gbe": "1GbE",
+        "ten_gbe_copper": "10GbE_Copper",
+        "ten_gbe_sfp": "10GbE_SFP",
+        "eight_gbfc": "8GbFC",
+        "sixteen_gbfc": "16GbFC",
+        "twentyfive_gbe_sfp": "25GbE_SFP"
+    },
+    "5350-FLEX 480TB_Capacity 2_Shelves 4x1GbE 8x10GbE_SFP 2x16Gb_FC": {
+        "name": "5350-FLEX 480TB_Capacity 2_Shelves 4x1GbE 8x10GbE_SFP 2x16Gb_FC",
+        "model": "5350-FLEX",
+        "shelves": "2",
+        "shelf_size": {
+            "value": "240",
+            "unit": "TB"
+        },
+        "capacity": {
+            "value": "480",
+            "unit": "TB"
+        },
+        "shelf_capacity": {
+            "value": "480",
+            "unit": "TB"
+        },
+        "calculated_capacity": {
+            "value": "480",
+            "unit": "TB"
+        },
+        "number_of_appliance_drives": "0",
+        "drives_per_shelf": "78",
+        "number_of_shelf_drives": "156",
+        "number_of_total_drives": "156",
+        "number_of_calculated_drives": "156",
+        "drive_size": {
+            "value": "4",
+            "unit": "TB"
+        },
+        "memory": {
+            "value": "768",
+            "unit": "GB"
+        },
+        "io_config": "A",
+        "one_gbe": {
+            "count": "4",
+            "io": "320"
+        },
+        "ten_gbe_copper": {
+            "count": "0",
+            "io": "0"
+        },
+        "ten_gbe_sfp": {
+            "count": "8",
+            "io": "6400"
+        },
+        "eight_gbfc": {
+            "count": "0",
+            "io": "0"
+        },
+        "sixteen_gbfc": {
+            "count": "2",
+            "io": "2100"
+        },
+        "twentyfive_gbe_sfp": {
+            "count": "8",
+            "io": "16000"
+        }
+    },
+    "5250 9TB_Capacity 0_Shelves 64_RAM  4x1GbE 2x10GbE_SFP": {
+        "name": "5250 9TB_Capacity 0_Shelves 64_RAM  4x1GbE 2x10GbE_SFP",
+        "model": "5250",
+        "shelves": "0",
+        "shelf_size": {
+            "value": "65.5",
+            "unit": "TB"
+        },
+        "capacity": {
+            "value": "9",
+            "unit": "TB"
+        },
+        "shelf_capacity": {
+            "value": "0",
+            "unit": "TB"
+        },
+        "calculated_capacity": {
+            "value": "9",
+            "unit": "TB"
+        },
+        "number_of_appliance_drives": "7",
+        "drives_per_shelf": "11",
+        "number_of_shelf_drives": "0",
+        "number_of_total_drives": "7",
+        "number_of_calculated_drives": "7",
+        "drive_size": {
+            "value": "2",
+            "unit": "TB"
+        },
+        "memory": {
+            "value": "64",
+            "unit": "GB"
+        },
+        "io_config": "A",
+        "one_gbe": {
+            "count": "4",
+            "io": "320"
+        },
+        "ten_gbe_copper": {
+            "count": "0",
+            "io": "0"
+        },
+        "ten_gbe_sfp": {
+            "count": "2",
+            "io": "1600"
+        },
+        "eight_gbfc": {
+            "count": "0",
+            "io": "0"
+        },
+        "sixteen_gbfc": {
+            "count": "0",
+            "io": "0"
+        },
+        "twentyfive_gbe_sfp": {
+            "count": "2",
+            "io": "4000"
+        }
+    }
+}

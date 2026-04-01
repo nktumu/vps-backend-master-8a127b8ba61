@@ -1,0 +1,245 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "size_response.json",
+    "title": "Size Response",
+    "description": "JSON schema for the primary sizing request response",
+    "anyOf": [
+        {
+            "$ref": "util.json#/$defs/error"
+        },
+        {
+            "$ref": "#/$defs/success"
+        }
+    ],
+    "$defs": {
+        "success": {
+            "type": "object",
+            "required": [
+                "site_assignments",
+                "windows",
+                "horizon"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "$schema": {
+                    "$ref": "util.json#/$defs/$schema"
+                },
+                "site_assignments": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "appliances",
+                            "site_name",
+                            "domain",
+                            "workload_summary"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                            "site_name": {
+                                "type": "string"
+                            },
+                            "domain": {
+                                "description": "Only applies to NBA Sizing"
+                            },
+                            "workload_summary": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "workload",
+                                        "summary_by_year"
+                                    ],
+                                    "properties": {
+                                        "workload": {
+                                            "type": "string"
+                                        },
+                                        "additionalProperties": false,
+                                        "summary_by_year": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "cloud_transfer",
+                                                    "storage_before_deduplication_primary",
+                                                    "storage_catalog",
+                                                    "storage_cloud",
+                                                    "storage_cloud_worst_case",
+                                                    "storage_dr",
+                                                    "storage_primary",
+                                                    "total_cloud_network_utilization",
+                                                    "total_dr_network_utilization",
+                                                    "total_network_utilization"
+                                                ],
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "backup_volume": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "cloud_storage": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "cloud_transfer": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "storage_before_deduplication_primary": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "storage_catalog": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "storage_cloud": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "storage_cloud_worst_case": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "storage_dr": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "storage_primary": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "total_cloud_network_utilization": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "total_dr_network_utilization": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    },
+                                                    "total_network_utilization": {
+                                                        "$ref": "util.json#/$defs/size"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "appliances": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "appliance",
+                                        "assignments",
+                                        "utilization"
+                                    ],
+                                    "$ref": "#/$defs/flex-requires-container-property",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "appliance": {
+                                            "$ref": "appliance.json"
+                                        },
+                                        "assignments": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "required": [
+                                                    "mode",
+                                                    "number_of_clients",
+                                                    "workload"
+                                                ],
+                                                "additionalProperties": false,
+                                                "properties": {
+                                                    "mode": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "media_primary",
+                                                            "media_dr",
+                                                            "primary",
+                                                            "media_cloud"
+                                                        ]
+                                                    },
+                                                    "number_of_clients": {
+                                                        "type": "integer"
+                                                    },
+                                                    "workload": {
+                                                        "type": "object"
+                                                    },
+                                                    "container": {
+                                                        "type": "string",
+                                                        "description": "Not applicable to NBA"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "utilization": {
+                                            "$ref": "utilization.json"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "horizon": {
+                    "$ref": "util.json#/$defs/horizon"
+                },
+                "windows": {
+                    "type": "object",
+                    "required": [
+                        "full_backup_hours",
+                        "incremental_backup_hours",
+                        "replication_hours"
+                    ],
+                    "properties": {
+                        "full_backup_hours": {
+                            "type": "number"
+                        },
+                        "incremental_backup_hours": {
+                            "type": "number"
+                        },
+                        "replication_hours": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "ltr_appliances": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "site_name",
+                                        "utilization"
+                                    ],
+                                    "additionalProperties": true,
+                                    "properties": {
+                                        "$ref": "appliance.json",
+                                        "utilization": {
+                                            "$ref": "utilization.json#/$defs/ltr_utilization"
+                                        }
+                                    }
+                                }
+                            }
+
+
+            }
+        },
+        "flex-requires-container-property": {
+            "if": {
+                "properties": {
+                    "appliance": {
+                        "properties": {
+                            "family": {
+                                "not": {
+                                    "const": "nba"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "assignments": {
+                        "items": {
+                            "required": [
+                                "container"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,6 @@
+sda
+noop [deadline] cfq 
+sdb
+noop [deadline] cfq 
+sdc
+noop [deadline] cfq 

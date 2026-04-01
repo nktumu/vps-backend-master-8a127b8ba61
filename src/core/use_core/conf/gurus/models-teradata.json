@@ -1,0 +1,437 @@
+[
+    {
+        "model": "Management Server",
+        "CC_SUPPORTED_APPLIANCES": false,
+        "deployment_type": [
+            "flex",
+            "non-flex"
+        ],
+        "performance_supported": true,
+	"eosl": false,
+        "ltr_src": false,
+        "model_pref": 1,
+        "MSDP_CAPPED_APPLIANCES": false,
+        "NOT_DR_CANDIDATE": true,
+        "not_dr_dest": true,
+        "storage_roundup": false,
+        "model_values": [
+            {
+                "field": "Max Capacity Utilization (%)",
+                "field_values": [
+                    0.8,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max CPU Utilization (%)",
+                "field_values": [
+                    0.7,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max NW Utilization (%)",
+                "field_values": [
+                    0.7,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max MBPs Utilization (%)",
+                "field_values": [
+                    0.7,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max Memory Utilization (%)",
+                "field_values": [
+                    0.7,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max Jobs/Day",
+                "field_values": [
+                    500000,
+                    "NumberPolicy",
+                    100
+                ]
+            },
+            {
+                "field": "Max DBs with 15 Min RPO",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    1
+                ]
+            },
+            {
+                "field": "Max VM Clients",
+                "field_values": [
+                    0,
+                    "NumberPolicy",
+                    1
+                ]
+            },
+            {
+                "field": "Max Concurrent Streams",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    1
+                ]
+            },
+            {
+                "field": "Max Number of Files",
+                "field_values": [
+                    0,
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "MSDP Max Size (TB)",
+                "field_values": [
+                    4,
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "Max Number of Images",
+                "field_values": [
+                    0,
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "LUN Size (TiB)",
+                "field_values": [
+                    "NA",
+                    "DecimalPolicyNoUpperBound",
+                    0.0
+                ]
+            },
+            {
+                "field": "Max Number of Primary Containers",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "Max Number of MSDP Containers",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "Max Catalog Size (TB)",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "Max Number of Universal Shares",
+                "field_values": [
+                    50,
+                    "NumberPolicy",
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "model": "5250",
+        "CC_SUPPORTED_APPLIANCES": true,
+        "deployment_type": [
+            "non-flex"
+        ],
+        "performance_supported": false,
+	"eosl": false,
+        "ltr_src": true,
+        "MASTER_SERVER_CANDIDATE": true,
+        "model_pref": 2,
+        "MSDP_CAPPED_APPLIANCES": false,
+        "storage_roundup": false,
+        "management_capable": true,
+        "model_values": [
+            {
+                "field": "Max Capacity Utilization (%)",
+                "field_values": [
+                    0.8,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max CPU Utilization (%)",
+                "field_values": [
+                    0.7,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max NW Utilization (%)",
+                "field_values": [
+                    0.7,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max MBPs Utilization (%)",
+                "field_values": [
+                    0.7,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max Memory Utilization (%)",
+                "field_values": [
+                    0.7,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max Jobs/Day",
+                "field_values": [
+                    13000,
+                    "NumberPolicy",
+                    100
+                ]
+            },
+            {
+                "field": "Max DBs with 15 Min RPO",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    1
+                ]
+            },
+            {
+                "field": "Max VM Clients",
+                "field_values": [
+                    3900,
+                    "NumberPolicy",
+                    1
+                ]
+            },
+            {
+                "field": "Max Concurrent Streams",
+                "field_values": [
+                    195,
+                    "NumberPolicy",
+                    1
+                ]
+            },
+            {
+                "field": "Max Number of Files",
+                "field_values": [
+                    0,
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "MSDP Max Size (TB)",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "Max Number of Images",
+                "field_values": [
+                    0,
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "LUN Size (TiB)",
+                "field_values": [
+                    "NA",
+                    "DecimalPolicyNoUpperBound",
+                    0.0
+                ]
+            },
+            {
+                "field": "Max Number of Primary Containers",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "Max Number of MSDP Containers",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "Max Catalog Size (TB)",
+                "field_values": [
+                    "NA",
+                    "NumberPolicy",
+                    0
+                ]
+            },
+            {
+                "field": "Max Number of Universal Shares",
+                "field_values": [
+                    50,
+                    "NumberPolicy",
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "model": "5350-FLEX",
+        "CC_SUPPORTED_APPLIANCES": true,
+        "deployment_type": ["flex"],
+        "performance_supported": true,
+	"eosl": false,
+        "ltr_src": true,
+        "model_pref": 8,
+        "MSDP_CAPPED_APPLIANCES": true,
+        "storage_roundup": true,
+        "management_capable": false,
+        "primary_reservation": {
+            "20": {
+                "cpu": 0.25,
+                "memory": "128GiB"
+            },
+            "100": {
+                "cpu": 0.5,
+                "memory": "256GiB"
+            }
+        },
+        "model_values": [
+            {
+                "field" : "Max Capacity Utilization (%)",
+                "field_values": [0.8, "DecimalPolicy", 0.0, "percent"]
+            },
+            {
+                "field" : "Max CPU Utilization (%)",
+                "field_values": [0.7, "DecimalPolicy", 0.0, "percent"]
+            },
+            {
+                "field" : "Max NW Utilization (%)",
+                "field_values": [0.7, "DecimalPolicy", 0.0, "percent"]
+            },
+            {
+                "field" : "Max MBPs Utilization (%)",
+                "field_values": [0.7, "DecimalPolicy", 0.0, "percent"]
+            },
+            {
+                "field" : "Max Memory Utilization (%)",
+                "field_values": [0.7, "DecimalPolicy", 0.0, "percent"]
+            },
+            {
+                "field" : "Max Jobs/Day",
+                "field_values": [25000, "NumberPolicy", 100]
+            },
+            {
+                "field" : "Max DBs with 15 Min RPO",
+                "field_values": ["NA", "NumberPolicy", 1]
+            },
+            {
+                "field" : "Max VM Clients",
+                "field_values": [7500, "NumberPolicy", 1]
+            },
+            {
+                "field" : "Max Concurrent Streams",
+                "field_values": [350, "NumberPolicy", 1]
+            },
+            {
+                "field" : "Max Number of Files",
+                "field_values": [0, "NumberPolicy", 0]
+            },
+            {
+                "field" : "MSDP Max Size (TB)",
+                "field_values": [960, "NumberPolicy", 960]
+            },
+            {
+                "field" : "Max Number of Images",
+                "field_values": [0, "NumberPolicy", 0]
+            },
+            {
+                "field" : "LUN Size (TiB)",
+                "field_values": [40, "DecimalPolicyNoUpperBound", 0.0]
+            },
+            {
+                "field" : "Max Number of Primary Containers",
+                "field_values": [6, "NumberPolicy", 0]
+            },
+            {
+                "field" : "Max Number of MSDP Containers",
+                "field_values": [6, "NumberPolicy", 0]
+            },
+            {
+                "field" : "Max Catalog Size (TB)",
+                "field_values": ["NA", "NumberPolicy", 0]
+            },
+            {
+                "field" : "Max Number of Universal Shares",
+                "field_values": [50, "NumberPolicy", 1]
+            }
+        ]
+    },
+    {
+        "model": "Access 3340",
+        "deployment_type": [
+            "ltr"
+        ],
+        "model_values": [
+            {
+                "field": "Max Capacity Utilization (%)",
+                "field_values": [
+                    0.8,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            },
+            {
+                "field": "Max CPU Utilization (%)",
+                "field_values": [
+                    0.7,
+                    "DecimalPolicy",
+                    0.0,
+                    "percent"
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,1 @@
+{"name": "test workload type", "annual_growth_rate": 0, "daily_change_rate": 0, "initial_dedup_rate": 0, "dedup_rate": 0, "addl_full_dedup_rate": 0, "num_files": 0, "num_channels": 0, "files_per_channel": 0, "log_backup_capable": true}

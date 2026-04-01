@@ -1,0 +1,674 @@
+# VERITAS: Copyright (c) 2020 Veritas Technologies LLC. All rights reserved.
+#
+# THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE SECRETS OF VERITAS
+# TECHNOLOGIES LLC.  USE, DISCLOSURE OR REPRODUCTION IS PROHIBITED WITHOUT THE
+# PRIOR EXPRESS WRITTEN PERMISSION OF VERITAS TECHNOLOGIES LLC.
+#
+# The Licensed Software and Documentation are deemed to be commercial computer
+# software as defined in FAR 12.212 and subject to restricted rights as defined
+# in FAR Section 52.227-19 "Commercial Computer Software - Restricted Rights"
+# and DFARS 227.7202, Rights in "Commercial Computer Software or Commercial
+# Computer Software Documentation," as applicable, and any successor
+# regulations, whether delivered by Veritas as on premises or hosted services.
+# Any use, modification, reproduction release, performance, display or
+# disclosure of the Licensed Software and Documentation by the U.S. Government
+# shall be solely in accordance with the terms of this Agreement.
+# Product version __version__
+
+swagger: "2.0"
+info:
+  description: "Simple API for USE sizer"
+  version: "1.0.0"
+  title: "USE"
+  contact:
+    email: "DL-VTAS-VUPC-SERVICE@veritas.com"
+host: "sizer.veritas.com"
+basePath: "/v1"
+tags:
+- name: "sizing"
+  description: "Core Sizing"
+- name: "slps"
+  description: "Storage Lifecycle Policies"
+- name: "workload-type"
+  description: "Default Workload Attributes"
+- name: "skus"
+  description: "Appliance SKUs"
+- name: "safety-margins"
+  description: "Appliance Safety Margins"
+schemes:
+- "https"
+paths:
+  /size:
+    post:
+      tags:
+      - "sizing"
+      summary: "Run sizing"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Sizing request"
+        required: true
+        schema:
+          $ref: "#/definitions/SizingRequest"
+      responses:
+        "200":
+          description: "Successful sizing"
+          schema:
+            $ref: "#/definitions/SizingResponse"
+        "405":
+          description: "Invalid input"
+  /slps:
+    get:
+      tags:
+      - "slps"
+      summary: "List Storage Lifecycle Policies"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "List of available SLPs"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/StorageLifecyclePolicy"
+  /slps/ranges:
+    get:
+      tags:
+      - "slps"
+      summary: "Query the valid ranges for SLP attributes"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+            description: "Object with atribute ranges"
+  /slps/{name}:
+    parameters:
+    - in: "path"
+      name: "name"
+      required: true
+      type: "string"
+    get:
+      tags:
+      - "slps"
+      summary: "Fetch a Storage Lifecycle Policy"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Definition of the named SLP"
+          schema:
+            $ref: "#/definitions/StorageLifecyclePolicy"
+        "404":
+          description: "Named policy does not exist"
+  /workload-type:
+    get:
+      tags:
+      - "workload-type"
+      summary: "List Workload Types"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "List of available Workload Types"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/WorkloadType"
+  /workload-type/ranges:
+    get:
+      tags:
+      - "workload-type"
+      summary: "Query the valid ranges for Workload attributes"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+            description: "Object with atribute ranges"
+  /workload-type/{name}:
+    parameters:
+    - in: "path"
+      name: "name"
+      required: true
+      type: "string"
+    get:
+      tags:
+      - "workload-type"
+      summary: "Fetch a Workload Type"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Definition of the named Workload Type"
+          schema:
+            $ref: "#/definitions/WorkloadType"
+        "404":
+          description: "Named workload type does not exist"
+  /skus:
+    get:
+      tags:
+      - "skus"
+      summary: "List Appliance SKUs"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "model"
+        type: "string"
+        required: false
+        description: |
+          Comma-separated list of models to include in result.
+      responses:
+        "200":
+          description: "List of available SKUs"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApplianceSku"
+  /safety-margins:
+    get:
+      tags:
+      - "safety-margins"
+      summary: "Fetch safety margins for all appliance models"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "List of configured safety margins"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ApplianceSafetyMargin"
+  /safety-margins/{model}:
+    parameters:
+    - in: "path"
+      name: "model"
+      required: true
+      type: "string"
+    get:
+      tags:
+      - "safety-margins"
+      summary: "Fetch safety margins for specified appliance model"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: |
+            Configured safety margins for specified appliance model
+          schema:
+            $ref: "#/definitions/ApplianceSafetyMargin"
+        "404":
+          description: "Specified model has no configured safety margins"
+definitions:
+  ApplianceSafetyMargin:
+    type: "object"
+    properties:
+      model:
+        type: "string"
+        description: |
+          Appliance model to which these safety margins apply.
+      capacity:
+        type: "number"
+        format: "float"
+        description: |
+          Maximum proportion of disk storage to use.  This must be a
+          number between 0 and 1.
+      cpu:
+        type: "number"
+        format: "float"
+        description: |
+          Maximum proportion of CPU time to use.  This must be a
+          number between 0 and 1.
+      memory:
+        type: "number"
+        format: "float"
+        description: |
+          Maximum proportion of appliance memory to use.  This must be
+          a number between 0 and 1.
+      network:
+        type: "number"
+        format: "float"
+        description: |
+          Maximum proportion of network bandwidth to use.  This must
+          be a number between 0 and 1.
+      io:
+        type: "number"
+        format: "float"
+        description: |
+          Maximum proportion of disk IO bandwidth to use.  This must
+          be a number between 0 and 1.
+      jobs_per_day:
+        type: "number"
+        description: |
+          Maximum number of jobs that a single appliance should be
+          allowed to do per day.
+      databases:
+        type: "number"
+        description: |
+          Maximum number of databases with 15-minute log backups that
+          a single appliance should be allowed to backup.
+      vms:
+        type: "number"
+        description: |
+          Maximum number of virtual machines that a single appliance
+          should be allowed to backup.
+      max_streams:
+        type: "number"
+        description: |
+          Limit on the maximum number of concurrent streams that an
+          appliance can backup.
+      files:
+        type: "number"
+        description: |
+          Limit on the maximum number of files that an appliance can
+          backup.
+      msdp_pool:
+        allOf:
+        - $ref: "#/definitions/Size"
+        description: |
+          Maximum amount of disk storage that can be used for backup
+          images.
+  ApplianceSku:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "Unique name for the SKU"
+      model:
+        type: "string"
+        enum:
+        - "5150"
+        - "5240"
+        - "5250"
+        - "5340"
+        - "5340-HA"
+      shelves:
+        type: "number"
+        description: "Number of shelves in the appliance configuration"
+      calculated_capacity:
+        allOf:
+        - $ref: "#/definitions/Size"
+        description: "Usable storage capacity"
+      capacity:
+        allOf:
+        - $ref: "#/definitions/Size"
+        description: "Displayed storage capacity"
+      number_of_appliance_drives:
+        type: "number"
+        description: "Number of appliance drives"
+      drives_per_shelf:
+        type: "number"
+        description: "Number of drives per shelf"
+      number_of_shelf_drives:
+        type: "number"
+        description: "Total number of drives in shelves"
+      number_of_total_drives:
+        type: "number"
+        description: "Total number of drives"
+      number_of_calculated_drives:
+        type: "number"
+        description: "Number of calculated drives"
+      drive_size:
+        allOf:
+        - $ref: "#/definitions/Size"
+        description: "Size of drives"
+      memory:
+        allOf:
+        - $ref: "#/definitions/Size"
+        description: "Available appliance memory"
+      io_config:
+        type: "string"
+        enum:
+        - A
+        - B
+        - C
+        - D
+        - E
+        - F
+        - G
+        - H
+        - I
+        - J
+        - K
+        - L
+        description: "IO configuration"
+      one_gbe:
+        allOf:
+        - $ref: "#/definitions/NetworkInterface"
+        description: "1GbE network interfaces"
+      ten_gbe_copper:
+        allOf:
+        - $ref: "#/definitions/NetworkInterface"
+        description: "10GbE network interfaces"
+      ten_gbe_sfp:
+        allOf:
+        - $ref: "#/definitions/NetworkInterface"
+        description: "10GbE SFP interfaces"
+      eight_gbfc:
+        allOf:
+        - $ref: "#/definitions/NetworkInterface"
+        description: "8Gbps FC interfaces"
+      sixteen_gbfc:
+        allOf:
+        - $ref: "#/definitions/NetworkInterface"
+        description: "16Gbps FC interfaces"
+  NetworkInterface:
+    type: "object"
+    properties:
+      count:
+        type: "number"
+        description: "Number of interfaces"
+      io:
+        type: "number"
+        description: "Total available bandwidth in MB/s"
+  SkuChange:
+    type: "object"
+    properties:
+      add:
+        type: "array"
+        items:
+          $ref: "#/definitions/ApplianceSku"
+        description: "List of new SKUs to add"
+      remove:
+        type: "array"
+        items:
+          type: "string"
+        description: "List of SKU names to remove"
+  SizingRequest:
+    type: "object"
+    properties:
+      flex:
+        type: "boolean"
+        default: "false"
+      access:
+        type: "boolean"
+        default: "false"
+      workloads:
+        type: "array"
+        items:
+          $ref: "#/definitions/Workload"
+        description: |
+          List of workloads.
+      site_preferences:
+        type: "array"
+        items:
+          $ref: "#/definitions/SitePref"
+        description: |
+          Preferences for each site. Each element in this array
+          specifies appliance selection preferences for one site.  It
+          is not mandatory to have preferences specified for each
+          site.  If not specified, the sizer will choose defaults.
+      horizon:
+        type: "object"
+        properties:
+          num_years:
+            type: "number"
+            description: |
+              Number of years to project usage out to.  Appliance
+              utilization will be reported up to these many years.
+          planning_year:
+            type: "number"
+            description: |
+              Year for which the appliances should be sized.
+  SizingResponse:
+    type: "array"
+    items:
+      $ref: "#/definitions/SiteSizingResponse"
+    description: |
+      List of sizing results for per site.
+  SiteSizingResponse:
+    type: "object"
+    properties:
+      site_name:
+        type: "string"
+        description: |
+          Name of the site which this sizing response is associated
+          with.
+      appliance_config:
+        type: "string"
+        description: |
+          Appliance SKU selected for the site.
+      appliances:
+        type: "array"
+        items:
+          $ref: "#/definitions/SiteAppliances"
+        description: |
+          List of appliances assigned to the site.
+  SiteAppliances:
+    type: "object"
+    properties:
+      assignments:
+        type: "array"
+        items:
+          $ref: "#/definitions/ApplianceAssignments"
+        description: |
+          List of workloads assigned to this appliance, along with the
+          number of clients of that workload.
+      utilization:
+        $ref: "#/definitions/ResourceUtilization"
+  ApplianceAssignments:
+    type: "object"
+    properties:
+      workload:
+        type: "string"
+        description: |
+          Name of workload assigned.
+      mode:
+        type: "string"
+        enum:
+          - primary
+          - dr
+        description: |
+          Whether this assignment is for the primary site of the
+          workload, or a DR site for the workload.
+      number_of_clients:
+        type: "number"
+        description: |
+          Number of clients out of the total in the workload.
+  ResourceUtilization:
+    type: "object"
+    description: |
+      Year-over-year resource utilization for this appliance.  Each
+      key refers to a list containing year-over-year utilization for
+      that resource.  First element in the list is utilization for
+      year 1, and so on.  There will be as many elements in the list
+      as there are years being sized for.
+    properties:
+      capacity:
+        type: array
+        items:
+          type: "number"
+          format: "double"
+        example: [0.4, 0.5, 0.6, 0.7, 0.8]
+      cpu:
+        type: array
+        items:
+          type: "number"
+          format: "double"
+        example: [0.6, 0.6, 0.7, 0.7, 0.8]
+      memory:
+        type: array
+        items:
+          type: "number"
+          format: "double"
+        example: [0.5, 0.5, 0.5, 0.5, 0.5]
+      io:
+        type: array
+        items:
+          type: "number"
+          format: "double"
+        example: [0.2, 0.2, 0.2, 0.3, 0.3]
+      network:
+        type: array
+        items:
+          type: "number"
+          format: "double"
+        example: [0.1, 0.1, 0.1, 0.1, 0.1]
+  StorageLifecyclePolicy:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      site_name:
+        type: "string"
+      dr_dest:
+        type: "array"
+        items:
+          type: "string"
+      backup_type:
+        type: "string"
+        enum:
+          - "local only"
+          - "local+dr"
+          - "local+ltr"
+          - "local+dr+ltr"
+          - "ltr only"
+      backup_intervals:
+        $ref: "#/definitions/Intervals"
+      local_retention:
+        $ref: "#/definitions/Retention"
+      dr_retention:
+        $ref: "#/definitions/Retention"
+      cloud_retention:
+        $ref: "#/definitions/Retention"
+  Workload:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: |
+          Name of workload.
+      type:
+        type: "string"
+        description: |
+          Type of workload.  This must be one of the defined Workload
+          Types.
+      size:
+        allOf:
+        - $ref: "#/definitions/Size"
+        description: |
+          Size of workload.  This must be the FETB (front-end
+          terabyte) for the workload across all of the clients.
+      number_of_clients:
+        type: "number"
+        description: |
+          Number of clients associated with the workload.
+      slp:
+        $ref: "#/definitions/StorageLifecyclePolicy"
+  WorkloadType:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: |
+          Name of workload type.
+      annual_growth_rate:
+        type: "number"
+        format: "double"
+        description: |
+          Year-over-year growth rate of FETB.  This is a percentage
+          value expressed in decimal (0.1 -> 10%, etc.)
+      daily_change_rate:
+        type: "number"
+        format: "double"
+        description: |
+          Daily change rate.  This is a percentage value expressed in
+          decimal (0.1 -> 10%, etc.)
+      initial_dedup_rate:
+        type: "number"
+        format: "double"
+        description: |
+          Initial dedup rate.  This is a percentage value expressed in
+          decimal (0.1 -> 10%, etc.)
+      dedup_rate:
+        type: "number"
+        format: "double"
+        description: |
+          Dedup rate.  This is a percentage value expressed in decimal
+          (0.1 -> 10%, etc.)
+      addl_full_dedup_rate:
+        type: "number"
+        format: "double"
+        description: |
+          Dedup rate for additional full backups.  This is a
+          percentage value expressed in decimal (0.1 -> 10%, etc.)
+      num_files:
+        type: "number"
+      num_channels:
+        type: "number"
+      files_per_channel:
+        type: "number"
+      log_backup_capable:
+        type: "boolean"
+        description: |
+          Whether this workload type is able to do log backups.
+  SitePref:
+    type: "object"
+    properties:
+      site_name:
+        type: "string"
+        description: |
+          Name of site for which these preferences are specified.
+      appliance_model:
+        type: "string"
+        enum:
+          - "5150"
+          - "5240"
+          - "5250"
+          - "5340"
+        description: |
+          Choice of appliance model.
+      appliance_config:
+        type: "string"
+        description: |
+          Choice of specific appliance configuration.  If this is
+          specified, automatic appliance selection is disabled.
+  Retention:
+    type: "object"
+    properties:
+      incremental:
+        type: "number"
+        description: |
+          Retention interval for incremental backups in days.
+      weekly_full:
+        type: "number"
+        description: |
+          Retention interval for weekly full backups in weeks.
+      monthly_full:
+        type: "number"
+        description: |
+          Retention interval for monthly full backups in months.
+      annual_full:
+        type: "number"
+        description: |
+          Retention interval for annual full backups in years.
+  Size:
+    type: "object"
+    properties:
+      value:
+        type: "number"
+      unit:
+        type: "string"
+        enum:
+          - "GiB"
+          - "TiB"
+          - "PiB"
+  Intervals:
+    type: "object"
+    properties:
+      fulls_per_week:
+        type: "number"
+        description: |
+          Number of full backups per week.
+      incrementals_per_week:
+        type: "number"
+        description: |
+          Number of incremental backups per week.
+      log_backup_interval:
+        type: "number"
+        description: |
+          Interval between log backups in minutes.

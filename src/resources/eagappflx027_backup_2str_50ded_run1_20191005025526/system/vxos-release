@@ -1,0 +1,8 @@
+baseboard-product-name = S2600WF0
+code-name = thunder_cloud
+model = 5150
+submod = D
+product-name = Flex
+product-version = 1.3
+vxos-core-buildtag = 20190926105122
+vxos-core-release = 3.2.1

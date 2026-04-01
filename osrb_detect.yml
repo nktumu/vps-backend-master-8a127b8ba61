@@ -1,0 +1,28 @@
+### Config file for Synopsys Detect
+
+# This line prevents the scanner from publishing results.  For testing only.
+#blackduck.offline.mode: true
+
+# The Open Source Review Board requires that all projects are scanned and results posted to Black Duck Hub.
+detect.project.name: "Unified Sizing Estimator VPS Backend"
+detect.project.version.name: "1.0"
+blackduck.url: "https://blackduckhub.veritas.com"
+
+# DUT repo is cloned to '/source'. Add a subdirectory to restrict within the repo.
+detect.source.path: "/source"
+
+# How far should the detector recurse into the directory tree?
+detect.detector.search.depth: 2
+
+# Specify any detection tools that should be skipped
+detect.tools.excluded: "SIGNATURE_SCAN"
+detect.excluded.detector.types: "CONDA"
+
+
+# Configure the search options for each tool
+detect.maven.excluded.scopes: "TEST"
+
+detect.go.mod.dependency.types.excluded: "UNUSED"
+detect.npm.dependency.types.excluded: "DEV"
+detect.pipfile.dependency.types.excluded: "DEV"
+detect.yarn.dependency.types.excluded: "NON_PRODUCTION"

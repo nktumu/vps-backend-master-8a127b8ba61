@@ -1,0 +1,12 @@
+{
+    "name": "DB2",
+    "annual_growth_rate": 0.2,
+    "daily_change_rate": 0.05,
+    "initial_dedup_rate": 0.7,
+    "dedup_rate": 0.8,
+    "addl_full_dedup_rate": 0.9,
+    "num_files": 150000,
+    "num_channels": 0,
+    "files_per_channel": 1,
+    "log_backup_capable": true
+}

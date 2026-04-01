@@ -1,0 +1,12 @@
+{
+    "name": "File System (Large Files)",
+    "annual_growth_rate": 0.2,
+    "daily_change_rate": 0.05,
+    "initial_dedup_rate": 0.75,
+    "dedup_rate": 0.85,
+    "addl_full_dedup_rate": 0.95,
+    "num_files": 100000,
+    "num_channels": 0,
+    "files_per_channel": 1,
+    "log_backup_capable": false
+}

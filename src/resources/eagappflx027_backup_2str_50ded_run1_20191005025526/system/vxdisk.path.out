@@ -1,0 +1,4 @@
+SUBPATH                     DANAME               DMNAME       GROUP        STATE
+sda                         localhost_disk_0     -            -            ENABLED
+sdb                         localhost_disk_1     -            -            ENABLED
+sdc                         localhost_disk_2     B00C953960243F705D15FB7EE1 vxosdg       ENABLED

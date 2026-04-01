@@ -1,0 +1,27 @@
+
+#
+# /etc/fstab
+# Created by anaconda on Sat Oct  5 07:28:12 2019
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/system-thunder_cloud_1.3--20190926105122_5d9845d4 /                       ext4    acl             1 1
+UUID=1df68a3e-82cf-4425-8724-148225410111 /boot                   ext4    defaults        1 2
+/dev/mapper/logging-application--log /log                    ext4    defaults        1 2
+/dev/mapper/system-flex--apps /opt/veritas/flex-apps  ext4    defaults        1 2
+/dev/mapper/system-autosupport /system/autosupport     xfs     defaults        0 0
+/dev/mapper/system-config /system/config          ext4    acl             1 2
+/dev/mapper/diagnostics-tools /system/diagnostic      xfs     defaults        0 0
+/dev/mapper/system-software /system/software        ext4    defaults        1 2
+/dev/mapper/system-repository /system/upgrade/repository ext4    defaults        1 2
+/dev/mapper/system-newroot /system/upgrade/volume  ext4    acl             1 2
+/dev/mapper/system-docker /var/lib/docker         xfs     prjquota        0 0
+/dev/mapper/logging-os--log /var/log                ext4    defaults        1 2
+/dev/mapper/logging-audit /var/log/audit          ext4    defaults        1 2
+/dev/mapper/system-swap swap                    swap    defaults        0 0
+
+# NOTE: When adding or modifying VxFS or VxVM entries, add 'nofail'
+# to the mount options to avoid boot failure during system bootup
+# if systemd tries to mount filesystem before VxVM and VxFS have
+# started.

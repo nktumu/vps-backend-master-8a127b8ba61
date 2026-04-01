@@ -1,0 +1,75 @@
+Ethernet Channel Bonding Driver: v3.7.1 (April 27, 2011)
+
+Bonding Mode: IEEE 802.3ad Dynamic link aggregation
+Transmit Hash Policy: layer2 (0)
+MII Status: up
+MII Polling Interval (ms): 100
+Up Delay (ms): 0
+Down Delay (ms): 0
+
+802.3ad info
+LACP rate: slow
+Min links: 0
+Aggregator selection policy (ad_select): stable
+System priority: 65535
+System MAC address: 98:03:9b:a5:52:ce
+Active Aggregator Info:
+	Aggregator ID: 1
+	Number of ports: 2
+	Actor Key: 15
+	Partner Key: 27
+	Partner Mac Address: 00:1c:73:3f:a7:eb
+
+Slave Interface: nic3
+MII Status: up
+Speed: 10000 Mbps
+Duplex: full
+Link Failure Count: 0
+Permanent HW addr: 98:03:9b:a5:52:ce
+Slave queue ID: 0
+Aggregator ID: 1
+Actor Churn State: none
+Partner Churn State: none
+Actor Churned Count: 0
+Partner Churned Count: 0
+details actor lacp pdu:
+    system priority: 65535
+    system mac address: 98:03:9b:a5:52:ce
+    port key: 15
+    port priority: 255
+    port number: 1
+    port state: 61
+details partner lacp pdu:
+    system priority: 32768
+    system mac address: 00:1c:73:3f:a7:eb
+    oper key: 27
+    port priority: 32768
+    port number: 46
+    port state: 61
+
+Slave Interface: nic4
+MII Status: up
+Speed: 10000 Mbps
+Duplex: full
+Link Failure Count: 0
+Permanent HW addr: 98:03:9b:a5:52:cf
+Slave queue ID: 0
+Aggregator ID: 1
+Actor Churn State: none
+Partner Churn State: none
+Actor Churned Count: 0
+Partner Churned Count: 0
+details actor lacp pdu:
+    system priority: 65535
+    system mac address: 98:03:9b:a5:52:ce
+    port key: 15
+    port priority: 255
+    port number: 2
+    port state: 61
+details partner lacp pdu:
+    system priority: 32768
+    system mac address: 00:1c:73:3f:a7:eb
+    oper key: 27
+    port priority: 32768
+    port number: 47
+    port state: 61

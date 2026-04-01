@@ -1,0 +1,64 @@
+filename:       /lib/modules/3.10.0-957.27.4.el7.x86_64/kernel/drivers/net/ethernet/intel/ixgbe/ixgbe.ko.xz
+version:        5.1.0-k-rh7.6
+license:        GPL
+description:    Intel(R) 10 Gigabit PCI Express Network Driver
+author:         Intel Corporation, <linux.nics@intel.com>
+retpoline:      Y
+rhelversion:    7.6
+srcversion:     8A6178275DDA252CA16D17C
+alias:          pci:v00008086d000015E5sv*sd*bc*sc*i*
+alias:          pci:v00008086d000015E4sv*sd*bc*sc*i*
+alias:          pci:v00008086d000015CEsv*sd*bc*sc*i*
+alias:          pci:v00008086d000015C8sv*sd*bc*sc*i*
+alias:          pci:v00008086d000015C7sv*sd*bc*sc*i*
+alias:          pci:v00008086d000015C6sv*sd*bc*sc*i*
+alias:          pci:v00008086d000015C4sv*sd*bc*sc*i*
+alias:          pci:v00008086d000015C3sv*sd*bc*sc*i*
+alias:          pci:v00008086d000015C2sv*sd*bc*sc*i*
+alias:          pci:v00008086d000015AEsv*sd*bc*sc*i*
+alias:          pci:v00008086d000015ACsv*sd*bc*sc*i*
+alias:          pci:v00008086d000015ADsv*sd*bc*sc*i*
+alias:          pci:v00008086d000015ABsv*sd*bc*sc*i*
+alias:          pci:v00008086d000015B0sv*sd*bc*sc*i*
+alias:          pci:v00008086d000015AAsv*sd*bc*sc*i*
+alias:          pci:v00008086d000015D1sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001563sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001560sv*sd*bc*sc*i*
+alias:          pci:v00008086d0000154Asv*sd*bc*sc*i*
+alias:          pci:v00008086d00001557sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001558sv*sd*bc*sc*i*
+alias:          pci:v00008086d0000154Fsv*sd*bc*sc*i*
+alias:          pci:v00008086d0000154Dsv*sd*bc*sc*i*
+alias:          pci:v00008086d00001528sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010F8sv*sd*bc*sc*i*
+alias:          pci:v00008086d0000151Csv*sd*bc*sc*i*
+alias:          pci:v00008086d00001529sv*sd*bc*sc*i*
+alias:          pci:v00008086d0000152Asv*sd*bc*sc*i*
+alias:          pci:v00008086d000010F9sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001514sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001507sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010FBsv*sd*bc*sc*i*
+alias:          pci:v00008086d00001517sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010FCsv*sd*bc*sc*i*
+alias:          pci:v00008086d000010F7sv*sd*bc*sc*i*
+alias:          pci:v00008086d00001508sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010DBsv*sd*bc*sc*i*
+alias:          pci:v00008086d000010F4sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010E1sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010F1sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010ECsv*sd*bc*sc*i*
+alias:          pci:v00008086d000010DDsv*sd*bc*sc*i*
+alias:          pci:v00008086d0000150Bsv*sd*bc*sc*i*
+alias:          pci:v00008086d000010C8sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010C7sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010C6sv*sd*bc*sc*i*
+alias:          pci:v00008086d000010B6sv*sd*bc*sc*i*
+depends:        mdio,ptp,dca
+intree:         Y
+vermagic:       3.10.0-957.27.4.el7.x86_64 SMP mod_unload modversions 
+signer:         Red Hat Enterprise Linux kernel signing key
+sig_key:        9F:72:E4:D7:7E:77:4E:97:27:98:83:9F:7C:93:03:21:58:C0:A0:F0
+sig_hashalgo:   sha256
+parm:           max_vfs:Maximum number of virtual functions to allocate per physical function - default is zero and maximum value is 63 (uint)
+parm:           allow_unsupported_sfp:Allow unsupported and untested SFP+ modules on 82599-based adapters (uint)
+parm:           debug:Debug level (0=none,...,16=all) (int)

@@ -1,0 +1,13 @@
+
+************ Data Store statistics ************
+Data storage      Raw    Size   Used   Avail  Use%
+                  11.9T  11.4T 711.4M  11.4T   0%
+
+Number of containers             : 1
+Average container size           : 507 bytes (0.00MB)
+Space allocated for containers   : 507 bytes (507.00B)
+Reserved space                   : 528034016256 bytes (491.77GB)
+Reserved space percentage        : 4.0%
+
+Use "--dsstat 1" to get more accurate statistics
+

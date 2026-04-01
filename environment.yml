@@ -1,0 +1,9 @@
+name: vupc
+channels:
+  - conda-forge   # conda-forge channel is free
+  - nodefaults    # default channels require paid license
+dependencies:
+  - python=3.9.7
+  - xlwings=0.24.9
+  # Add new module dependencies to module's setup.py
+  # Add new dev dependencies to dev-environment.yml

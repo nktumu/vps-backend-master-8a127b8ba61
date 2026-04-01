@@ -1,0 +1,51 @@
+[
+    {
+	"name": "Access 3340 (255TiB) 280TB",
+	"capacity": "255TiB",
+	"primary_capacity": "255TiB",
+	"shelf_capacity": "0TiB",
+	"num_shelves": 0
+    },
+    {
+	"name": "Access 3340 (510TiB) 560TB",
+	"capacity": "510TiB",
+	"primary_capacity": "255TiB",
+	"shelf_capacity": "255TiB",
+	"num_shelves": 1
+    },
+    {
+	"name": "Access 3340 (891TiB) 980TB",
+	"capacity": "891TiB",
+	"primary_capacity": "255TiB",
+	"shelf_capacity": "636TiB",
+	"num_shelves": 1
+    },
+    {
+	"name": "Access 3340 (636TiB) 700TB",
+	"capacity": "636TiB",
+	"primary_capacity": "636TiB",
+	"shelf_capacity": "0TiB",
+	"num_shelves": 0
+    },
+    {
+	"name": "Access 3340 (1272TiB) 1400TB",
+	"capacity": "1272TiB",
+	"primary_capacity": "636TiB",
+	"shelf_capacity": "636TiB",
+	"num_shelves": 1
+    },
+    {
+	"name": "Access 3340 (1908TiB) 2100TB",
+	"capacity": "1908TiB",
+	"primary_capacity": "636TiB",
+	"shelf_capacity": "1272TiB",
+	"num_shelves": 2
+    },
+    {
+	"name": "Access 3340 (2544TiB) 2800TB",
+	"capacity": "2544TiB",
+	"primary_capacity": "636TiB",
+	"shelf_capacity": "1908TiB",
+	"num_shelves": 3
+    }
+]

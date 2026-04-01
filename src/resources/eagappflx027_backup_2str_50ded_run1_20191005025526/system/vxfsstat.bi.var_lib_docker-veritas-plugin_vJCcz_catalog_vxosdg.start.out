@@ -1,0 +1,22 @@
+
+02:54:42.915 Sat 05 Oct 2019 02:54:42 AM PDT -- absolute sample
+
+Lookup, DNLC & Directory Cache Statistics
+        0 maximum entries in dnlc
+    54412 total lookups   	    0.00% fast lookup
+  2544074 total dnlc lookup 	   97.86% dnlc hit rate
+        0 total enter    	2489662.00  hit per enter
+        0 total dircache setup	    0.00  calls per setup
+   106273 total directory scan 	   21.06% fast directory scan
+
+inode cache statistics
+     4938 inodes current      4938 peak              2052717 maximum
+    50710 lookups            83.82% hit rate
+     5386 inodes alloced        448 freed
+      225 sec recycle age [not limited by maximum]
+      600 sec free age
+
+buffer cache statistics
+     8664 Kbyte current    7716864 maximum
+   226947 lookups            99.75% hit rate
+     3674 sec recycle age [not limited by maximum]

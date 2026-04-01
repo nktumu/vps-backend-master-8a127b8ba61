@@ -1,0 +1,222 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "size_request.json",
+    "title": "Size Request",
+    "description": "JSON schema for the primary sizing request body",
+    "$defs": {
+        "safety_considerations": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "model": {
+                    "description": "appliance model",
+                    "enum": [
+                        "Primary Server",
+                        "5150",
+                        "5240",
+                        "5250",
+                        "5250-FLEX",
+                        "5260-FLEX",
+                        "5340",
+                        "5340-HA-FLEX",
+                        "5350",
+                        "5350-FLEX",
+                        "5350-HA-FLEX",
+                        "5360-FLEX",
+                        "5360-HA-FLEX",
+                        "ACCESS-3340"
+                    ],
+                    "type": "string"
+                },
+                "Capacity": {
+                    "description": "Maximum capacity utilized in percentage",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "type": "number"
+                },
+                "CPU": {
+                    "description": "Maximum cpu usage in percentage",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "type": "number"
+                },
+                "NW": {
+                    "description": "Maximum network utilization  in percentage",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "type": "number"
+                },
+                "IO": {
+                    "description": "Maximum IO(MBPs) usage in percentage",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "type": "number"
+                },
+                "Memory": {
+                    "description": "Maximum memory usage in percentage",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "type": "number"
+                },
+                "Jobs_Per_Day": {
+                    "description": "Maximum number of jobs run per day",
+                    "minimum": 1,
+                    "type": "number"
+                },
+                "DBs@15": {
+                    "description": "Maximum DBs with 15 minimum RPO ",
+                    "minimum": 1,
+                    "type": "number"
+                },
+                "VMs": {
+                    "description": "Maximum number of VM clients",
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "Streams": {
+                    "description": "Maximum number of concurrent streams",
+                    "minimum": 2,
+                    "type": "integer"
+                },
+                "Files": {
+                    "description": "Maximum number of files",
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "Images": {
+                    "description": "Maximum number of files",
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "LUN_Size": {
+                    "description": "LUN size for flex appliance",
+                    "minimum": 0,
+                    "type": "number"
+                },
+                "Primary_Containers": {
+                    "description": "Maximum number of primary server containers",
+                    "minimum": 0,
+                    "type": "integer"
+                },
+                "MSDP_Containers": {
+                    "description": "Maximum number of MSDP containers",
+                    "minimum": 0,
+                    "type": "integer"
+                },
+                "Max_Catalog_Size": {
+                    "description": "Maximum catalog capacity",
+                    "minimum": 0,
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "type": "object",
+    "required": [
+        "workloads",
+        "site_preferences",
+        "horizon"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "$schema": {
+            "$ref": "util.json#/$defs/$schema"
+        },
+        "safety_considerations": {
+            "type": "array",
+            "additional_properties": false,
+            "items": {
+                "$ref": "#/$defs/safety_considerations"
+            }
+        },
+        "workloads": {
+            "$anchor": "workloads",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "workload.json"
+            }
+        },
+        "site_preferences": {
+            "$anchor": "site_preferences",
+            "description": "Array of customer Sites. Each element in this array specifies appliance selection preferences for one site, and must conform to the Site schema.",
+            "type": "array",
+            "items": {
+                "$anchor": "site",
+                "title": "Site",
+                "type": "object",
+                "required": [
+                    "domain",
+                    "site_name"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "domain": {
+                        "type": "string",
+                        "examples": [
+                            "Domain-1",
+                            "Domain-2"
+                        ]
+                    },
+                    "site_name": {
+                        "type": "string",
+                        "description": "Name of site for which these preferences are specified.",
+                        "examples": [
+                            "Site-1",
+                            "Site-2"
+                        ]
+                    },
+                    "appliance_family": {
+                        "type": "string",
+                        "description": "Sizing will be calculated for this type of product deployment.  Sizing cannot mix appliance families.",
+                        "default": "flex",
+                        "enum": [
+                            "nba",
+                            "flex",
+                            "flexscale"
+                        ]
+                    },
+                    "appliance_model": {
+                        "description": "Choice of appliance model.",
+                        "type": "string",
+                        "examples": [
+                            "5150"
+                        ]
+                    },
+                    "appliance_config": {
+                        "description": "Choice of specific appliance configuration. If this is specified, automatic appliance selection is disabled.",
+                        "type": "string",
+                        "examples": [
+                            "5150 15TB"
+                        ]
+                    }
+                }
+            }
+        },
+        "horizon": {
+            "$ref": "util.json#/$defs/horizon"
+        },
+        "settings": {
+            "type": "object",
+            "additional_properties": false,
+            "properties": {
+                "primary_server_sizing": {
+                    "description": "If enabled, the primary server appliances or containers will be sized",
+                    "type": "boolean",
+                    "default": false
+                },
+                "cloud_target_type": {
+                    "description": "Type of LTR target to use.  Selecting Access uses the performance characteristics of the Access appliance for cloud replication, and additionally sizes Access appliances.",
+                    "type": "string",
+                    "default": "Access"
+                },
+                "Worst_case_excess_space_usage_for_msdp-c": {
+                    "description": "Excess space used in the worst case when using MSDP-C to send data to the cloud",
+                    "type": "number",
+                    "default": 30.0
+                }
+            }
+        }
+
+    }
+}

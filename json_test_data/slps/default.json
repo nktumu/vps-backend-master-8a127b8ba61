@@ -1,0 +1,31 @@
+{
+    "name": "default",
+    "site_name": "DC",
+    "dr_dest": [
+        "not specified"
+    ],
+    "backup_type": "local only",
+    "local_retention": {
+        "incremental": 30,
+        "weekly_full": 4,
+        "monthly_full": 6,
+        "annual_full": 0
+    },
+    "dr_retention": {
+        "incremental": 0,
+        "weekly_full": 0,
+        "monthly_full": 0,
+        "annual_full": 0
+    },
+    "cloud_retention": {
+        "incremental": 0,
+        "weekly_full": 0,
+        "monthly_full": 0,
+        "annual_full": 0
+    },
+    "backup_intervals": {
+        "fulls_per_week": 1,
+        "incrementals_per_week": 5,
+        "log_backup_interval": 15
+    }
+}

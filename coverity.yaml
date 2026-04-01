@@ -1,0 +1,6 @@
+analyze:
+  location: local
+commit:
+  connect:
+    stream: USE_VPS_BACKEND
+    url: https://rsvcoverity01.rsv.ven.veritas.com:8443

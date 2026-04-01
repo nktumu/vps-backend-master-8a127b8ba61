@@ -1,0 +1,20 @@
+{
+    "job_id": "88888888-4444-4444-4444-cccccccccccc",
+    "tasks": [
+        {
+            "task": "workload_sizing",
+            "status": "COMPLETE",
+            "progress": 100
+        },
+        {
+            "task": "appliance_sizing",
+            "status": "PENDING",
+            "progress": 0
+        }
+    ],
+    "workload_results": [
+        {
+            "results": "go here"
+        }
+    ]
+}

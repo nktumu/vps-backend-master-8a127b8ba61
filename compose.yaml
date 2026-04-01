@@ -1,0 +1,55 @@
+name: vps-backend
+services:
+  broker:
+    image: "redis:latest"
+    expose:
+      - "6379"
+    command: --appendonly yes --maxmemory 512M --maxmemory-policy volatile-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+
+  worker:
+    build:
+      context: .
+      target: deploy
+    environment:
+      CELERY_BROKER_URL: redis://broker:6379/0
+    command:
+      - celery
+      - --app=use_server.celery_app
+      - worker
+      - --loglevel=INFO
+      - --logfile=celery.log
+    depends_on:
+      - broker
+
+  api:
+    build:
+      context: .
+      target: test
+    expose:
+      - "${USE_SERVER_PORT:-7186}"
+    environment:
+      CELERY_BROKER_URL: redis://broker:6379/0
+      USE_SERVER_PORT: ${USE_SERVER_PORT:-7186}
+    command:
+      - python
+      - -m
+      - use_server
+    depends_on:
+      - worker
+      - broker
+
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    depends_on:
+      - api
+
+volumes:
+  caddy_data:

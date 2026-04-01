@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "workload_type.json",
+    "title": "Workload Type",
+    "description": "Defines a Workload Type. All Workload Type definitions, either preset or user defined, must match this format.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "addl_full_dedup_rate": {
+            "description": "Dedup rate for additional full backups.  This is a percentage value expressed in decimal (0.1 -> 10%, etc.)",
+            "type": "number"
+        },
+        "annual_growth_rate": {
+            "description": "Year-over-year growth rate of FETB.  This is a percentage value expressed in decimal (0.1 -> 10%, etc.)",
+            "type": "number"
+        },
+        "daily_change_rate": {
+            "description": "Daily change rate.  This is a percentage value expressed in decimal (0.1 -> 10%, etc.)",
+            "type": "number"
+        },
+        "dedup_rate": {
+            "description": "Dedup rate.  This is a percentage value expressed in decimal (0.1 -> 10%, etc.)",
+            "type": "number"
+        },
+        "files_per_channel": {
+            "type": "number"
+        },
+        "initial_dedup_rate": {
+            "description": "Initial dedup rate.  This is a percentage value expressed in decimal (0.1 -> 10%, etc.)",
+            "type": "number"
+        },
+        "log_backup_capable": {
+            "description": "Whether this workload type is able to do log backups.",
+            "type": "boolean"
+        },
+        "name": {
+            "description": "Name of workload type.",
+            "type": "string"
+        },
+        "num_channels": {
+            "type": "integer"
+        },
+        "num_files": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "addl_full_dedup_rate",
+        "annual_growth_rate",
+        "daily_change_rate",
+        "dedup_rate",
+        "files_per_channel",
+        "initial_dedup_rate",
+        "log_backup_capable",
+        "name",
+        "num_channels",
+        "num_files"
+    ]
+}

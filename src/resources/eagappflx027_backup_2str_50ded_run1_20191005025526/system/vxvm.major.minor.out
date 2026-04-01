@@ -1,0 +1,6 @@
+total 0
+brw------- 1 root root 199, 8000 Oct  5 01:07 data
+brw------- 1 root root 199, 8002 Oct  5 01:16 vJCcz_catalog
+brw------- 1 root root 199, 8001 Oct  5 01:16 vJCcz_logs
+brw------- 1 root root 199, 8003 Oct  5 01:27 vWMsa_logs
+brw------- 1 root root 199, 8004 Oct  5 01:27 vWMsa_msdpdata-0

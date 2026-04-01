@@ -1,0 +1,249 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "utilization",
+    "if": {
+        "appliance": {
+            "properties": {
+                "family": {
+                    "not": {
+                        "const": "nba"
+                    }
+                }
+            }
+        }
+    },
+    "then": {
+        "allOf": [
+            {
+                "$ref": "#/$defs/media_utilization"
+            },
+            {
+                "$ref": "#/$defs/primary_utilization"
+            }
+        ]
+    },
+    "else": {
+        "if": {
+            "assignments": {
+                "properties": {
+                    "mode": {
+                        "not": {
+                            "const": "primary"
+                        }
+                    }
+                }
+            }
+        },
+        "then": {
+            "$ref": "#/$defs/media_utilization"
+        },
+        "else": {
+            "$ref": "#/$defs/primary_utilization"
+        }
+    },
+    "$defs": {
+        "media_utilization": {
+            "type": "object",
+            "required": [
+                "capacity",
+                "cpu",
+                "io",
+                "memory",
+                "network",
+                "absolute_capacity",
+                "alloc_capacity",
+                "alloc_capacity_pct",
+                "nic_dr",
+                "DR Transfer GiB/Week",
+                "nic_cloud",
+                "Cloud Transfer GiB/week",
+                "Cloud Minimum Bandwidth(Mbps)",
+                "absolute_io",
+                "Full Backup",
+                "Incremental Backup",
+                "Size Before Deduplication",
+                "Size After Deduplication",
+                "cloud_gib_months",
+                "cloud_gib_months_worst_case"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "capacity": {
+                    "description": "capacity usage in percentage",
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                },
+                "cpu": {
+                    "description": "cpu usage in percentage",
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                },
+                "io": {
+                    "description": "I/O usage in percentage",
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                },
+                "memory": {
+                    "description": "memory usage in percentage",
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                },
+                "network": {
+                    "description": "network usage in percentage",
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                },
+                "absolute_capacity": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "alloc_capacity": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "alloc_capacity_pct": {
+                    "$ref": "util.json#/$defs/percentage"
+                },
+                "nic_dr": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "DR Transfer GiB/Week": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "nic_cloud": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "Cloud Transfer GiB/week": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "Cloud Minimum Bandwidth(Mbps)": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "absolute_io": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "Full Backup": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "Incremental Backup": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "Size Before Deduplication": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "Size After Deduplication": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "cloud_gib_months": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                },
+                "cloud_gib_months_worst_case": {
+                    "$ref": "util.json#/$defs/applianceSummaryObject"
+                }
+            }
+        },
+        "primary_utilization": {
+            "type": "object",
+            "required": [
+                "absolute_capacity",
+                "cpu",
+                "files",
+                "images",
+                "jobs/day",
+                "memory"
+            ],
+            "properties": {
+                "absolute_capacity": {
+                    "description": "capacity used",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "cpu": {
+                    "description": "cpu usage in percentage",
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                },
+                "files": {
+                    "description": "number of files",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "images": {
+                    "description": "number of images",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "jobs/day": {
+                    "description": "number of jobs run per day",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "memory": {
+                    "description": "percentage of memory used ",
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                }
+            }
+        },
+        "ltr_utilization": {
+            "type": "object",
+            "required": [
+                "capacity",
+                "absolute_capacity"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "capacity": {
+                    "description": "capacity usage in percentage",
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                    }
+                },
+                "absolute_capacity": {
+                    "description": "capacity used",
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    }
+}

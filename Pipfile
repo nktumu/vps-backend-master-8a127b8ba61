@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sizer-core = {editable = true,path = "./src/core"}
+sizer-server = {editable = true,path = "./src/server"}
+# Add new dependencies to the setup.py for the module
+
+[dev-packages]
+sizer-core = {editable = true,path = "./src/core"}
+sizer-devtools = {editable = true,path = "./src/devtools"}
+openapi-schema-validator = ">=0.2.3"
+black = ">=22.1.0"
+coverage = ">=6.3.2"
+flake8 = ">=4.0.1"
+hypothesis = ">=6.29.3"
+pytest = ">=6.2.5"
+
+[requires]
+python_version = "3.9"

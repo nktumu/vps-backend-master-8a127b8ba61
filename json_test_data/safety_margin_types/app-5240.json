@@ -1,0 +1,12 @@
+{
+    "Capacity": 80,
+    "CPU": 70,
+    "NW": 70,
+    "IO": 70,
+    "Memory": 70,
+    "Jobs_Per_Day": 10000,
+    "VMs": 3000,
+    "Streams": 150,
+    "max_files": 0,
+    "Max_Cal_Cap": 0
+}

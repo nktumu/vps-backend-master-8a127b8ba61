@@ -1,0 +1,101 @@
+            CPU0       CPU1       CPU2       CPU3       CPU4       CPU5       CPU6       CPU7       
+   0:         92          0          0          0          0          0          0          0   IO-APIC-edge      timer
+   4:         97          0          0          0          0          0          0          0   IO-APIC-edge      serial
+   8:          1          0          0          0          0          0          0          0   IO-APIC-edge      rtc0
+   9:          3          0          0          0          0          0          0          0   IO-APIC-fasteoi   acpi
+  16:          0          0          0          0          0          0          0          0   IO-APIC-fasteoi   i801_smbus
+  28:         61          0          0          0          0          0          0          0   PCI-MSI-edge      xhci_hcd
+  30:     373197          0          0          0          0          0          0          0   PCI-MSI-edge      megasas
+  31:          0     337751          0          0          0          0          0          0   PCI-MSI-edge      megasas
+  32:          0          0     415863          0          0          0          0          0   PCI-MSI-edge      megasas
+  33:          0          0          0     341066          0          0          0          0   PCI-MSI-edge      megasas
+  34:          0          0          0          0     341448          0          0          0   PCI-MSI-edge      megasas
+  35:          0          0          0          0          0     355209          0          0   PCI-MSI-edge      megasas
+  36:          0          0          0          0          0          0     390389          0   PCI-MSI-edge      megasas
+  37:          0          0          0          0          0          0          0     371487   PCI-MSI-edge      megasas
+  40:          0          0          0          0          0          0          0          0   PCI-MSI-edge      i40e-0000:67:00.0:misc
+  41:         55          5         55         16         23         68         69        413   PCI-MSI-edge      i40e-nic2-TxRx-0
+  42:         91          0          1         16         31        286         15         30   PCI-MSI-edge      i40e-nic2-TxRx-1
+  43:        219         80        199         40         86        221        168       1984   PCI-MSI-edge      i40e-nic2-TxRx-2
+  44:         25         69          0         18        112         20         40          9   PCI-MSI-edge      i40e-nic2-TxRx-3
+  45:          7         55         15         27         85         11         50         12   PCI-MSI-edge      i40e-nic2-TxRx-4
+  46:         27          1         95         23         46         46          9        311   PCI-MSI-edge      i40e-nic2-TxRx-5
+  47:         77        264        114         71        103         28        141         38   PCI-MSI-edge      i40e-nic2-TxRx-6
+  48:       1698       1125       1111       1305       2757       1349       1852       1022   PCI-MSI-edge      i40e-nic2-TxRx-7
+  49:          0          0          0          0          0          0          0          0   PCI-MSI-edge      i40e-0000:67:00.0:fdir-TxRx-0
+  91:        197          0         68         68          0        179          0        845   PCI-MSI-edge      0000:00:11.5
+  92:          0          0          0          0          0          0          0          0   PCI-MSI-edge      0000:00:17.0
+  93:          0          0          0          0          0          0          0          0   PCI-MSI-edge      i40e-0000:67:00.1:misc
+  94:        162         25         78         59         23        203        139         15   PCI-MSI-edge      i40e-nic1-TxRx-0
+  95:         50          0         17          6         22        171        158         46   PCI-MSI-edge      i40e-nic1-TxRx-1
+  96:        253         48        120        108        113        111        225       2019   PCI-MSI-edge      i40e-nic1-TxRx-2
+  97:         34         69          3         16        101         21         40          9   PCI-MSI-edge      i40e-nic1-TxRx-3
+  98:         36         73          0         19         84          2         35         13   PCI-MSI-edge      i40e-nic1-TxRx-4
+  99:         59          5         94         26          9         30          6        330   PCI-MSI-edge      i40e-nic1-TxRx-5
+ 100:         42        216        231         45        144         23         98         40   PCI-MSI-edge      i40e-nic1-TxRx-6
+ 101:       1078        929       2282        518        881       1520       3857       1154   PCI-MSI-edge      i40e-nic1-TxRx-7
+ 102:          0          0          0          0          0          0          0          0   PCI-MSI-edge      i40e-0000:67:00.1:fdir-TxRx-0
+ 144:          0          0          0          0          0          0          0          0   PCI-MSI-edge      i40e-0000:67:00.2:misc
+ 145:         95         29         80         11         21         12         24        432   PCI-MSI-edge      i40e-nic0-TxRx-0
+ 146:        269          0         16          4         17        133          1         30   PCI-MSI-edge      i40e-nic0-TxRx-1
+ 147:        302        421        188        177        275        530        603        501   PCI-MSI-edge      i40e-nic0-TxRx-2
+ 148:         17         89         10         20         19         91         27         20   PCI-MSI-edge      i40e-nic0-TxRx-3
+ 149:         40         11          7         98         84          1          1         20   PCI-MSI-edge      i40e-nic0-TxRx-4
+ 150:         37        100         18         33        254         12         96          8   PCI-MSI-edge      i40e-nic0-TxRx-5
+ 151:         37        223        146         54        165         58        138         17   PCI-MSI-edge      i40e-nic0-TxRx-6
+ 152:       1745        719        748       1264       1054       2874       1276       2539   PCI-MSI-edge      i40e-nic0-TxRx-7
+ 153:          0          0          0          0          0          0          0          0   PCI-MSI-edge      i40e-0000:67:00.2:fdir-TxRx-0
+ 195:          0          0          0          0          0          0          0          0   PCI-MSI-edge      i40e-0000:67:00.3:misc
+ 196:        692        245        265        258        681        414       1387        391   PCI-MSI-edge      i40e-host0-TxRx-0
+ 197:        457        545        198        987       1302        175        340         71   PCI-MSI-edge      i40e-host0-TxRx-1
+ 198:        488         97       1345        364        171        119        330       3958   PCI-MSI-edge      i40e-host0-TxRx-2
+ 199:         80        158        123        101        141         41        250       2082   PCI-MSI-edge      i40e-host0-TxRx-3
+ 200:        129         13        157        690       2358       2263        156        162   PCI-MSI-edge      i40e-host0-TxRx-4
+ 201:        118          8        106        221        685         65        145       1880   PCI-MSI-edge      i40e-host0-TxRx-5
+ 202:        988        526        164         52        112         83      30308       1722   PCI-MSI-edge      i40e-host0-TxRx-6
+ 203:        870        937        970        559        402        945        880      94150   PCI-MSI-edge      i40e-host0-TxRx-7
+ 204:          0          0          0          0          0          0          0          0   PCI-MSI-edge      i40e-0000:67:00.3:fdir-TxRx-0
+ 246:          0          4          0          0          0          0          0          0   PCI-MSI-edge      mlx5_pages_eq@pci:0000:17:00.0
+ 247:          0        623     337492       4300          0          0     279395          0   PCI-MSI-edge      mlx5_cmd_eq@pci:0000:17:00.0
+ 248:          0          1          0          0          0          0          0          0   PCI-MSI-edge      mlx5_async_eq@pci:0000:17:00.0
+ 249:          0          0          0          0          0          0          0          0   PCI-MSI-edge      mlx5_page_fault_eq@pci:0000:17:
+ 250:      11651        870      16564       5792      23051         44      34437     571721   PCI-MSI-edge      mlx5_comp0@pci:0000:17:00.0
+ 251:       7957       1423        607     359286      19387       4634      29995       3915   PCI-MSI-edge      mlx5_comp1@pci:0000:17:00.0
+ 252:      19903     611626       3048          0       8926      66322        977      19764   PCI-MSI-edge      mlx5_comp2@pci:0000:17:00.0
+ 253:      11440       2242       3307        932     192793      23868      33152       3788   PCI-MSI-edge      mlx5_comp3@pci:0000:17:00.0
+ 254:      29991         13      19718          0      13700     302024      75434      25608   PCI-MSI-edge      mlx5_comp4@pci:0000:17:00.0
+ 255:      26732          2         12      73036      40260      53830      39436          0   PCI-MSI-edge      mlx5_comp5@pci:0000:17:00.0
+ 256:     131391       2614      81603         60      25683       8069          0          0   PCI-MSI-edge      mlx5_comp6@pci:0000:17:00.0
+ 257:          7       9366        940      44275      17046     120295      74828      14003   PCI-MSI-edge      mlx5_comp7@pci:0000:17:00.0
+ 259:          1          0          0          0          0          0          0          0   PCI-MSI-edge      mlx5_pages_eq@pci:0000:17:00.1
+ 260:       8931       3015      10365       6505      13809      17932      43867      84288   PCI-MSI-edge      mlx5_cmd_eq@pci:0000:17:00.1
+ 261:          1          0          0          0          0          0          0          0   PCI-MSI-edge      mlx5_async_eq@pci:0000:17:00.1
+ 262:          0          0          0          0          0          0          0          0   PCI-MSI-edge      mlx5_page_fault_eq@pci:0000:17:
+ 263:       3826         87       6909       2869       2546       7029       8712       1104   PCI-MSI-edge      mlx5_comp0@pci:0000:17:00.1
+ 264:        138      24065        195        490        178        127        275       7058   PCI-MSI-edge      mlx5_comp1@pci:0000:17:00.1
+ 265:         50         50        457        105        347        147        341        228   PCI-MSI-edge      mlx5_comp2@pci:0000:17:00.1
+ 266:        210          6        295         71        462        202        395         39   PCI-MSI-edge      mlx5_comp3@pci:0000:17:00.1
+ 267:       4734       3570       2564      21305      20106       3798       2945       4449   PCI-MSI-edge      mlx5_comp4@pci:0000:17:00.1
+ 268:        508        402         73         84        127        329        435         16   PCI-MSI-edge      mlx5_comp5@pci:0000:17:00.1
+ 269:        282         54        390         37        129        104        379     152615   PCI-MSI-edge      mlx5_comp6@pci:0000:17:00.1
+ 270:     154818         88        301         64        591         46        283         24   PCI-MSI-edge      mlx5_comp7@pci:0000:17:00.1
+ 271:         22          0          0          0          0          0          0          0   PCI-MSI-edge      mei_me
+ NMI:         75         80         80         98         76         76         96         77   Non-maskable interrupts
+ LOC:    2848479    2902625    2988640    3108298    2950979    2946149    3158495    2937880   Local timer interrupts
+ SPU:          0          0          0          0          0          0          0          0   Spurious interrupts
+ PMI:         75         80         80         98         76         76         96         77   Performance monitoring interrupts
+ IWI:      12309      13394      13907      12906      13458      12176      12494      13763   IRQ work interrupts
+ RTR:          7          0          0          0          0          0          0          0   APIC ICR read retries
+ RES:     125712     102452     100997      75880     100884      92229      92734      84641   Rescheduling interrupts
+ CAL:       3936       3684       3596       3756       3891       3503       3946       3837   Function call interrupts
+ TLB:     183193     176908     181313     184367     189754     194283     186660     191553   TLB shootdowns
+ TRM:          0          0          0          0          0          0          0          0   Thermal event interrupts
+ THR:          0          0          0          0          0          0          0          0   Threshold APIC interrupts
+ DFR:          0          0          0          0          0          0          0          0   Deferred Error APIC interrupts
+ MCE:          0          0          0          0          0          0          0          0   Machine check exceptions
+ MCP:         29         29         29         29         29         29         29         29   Machine check polls
+ ERR:          0
+ MIS:          0
+ PIN:          0          0          0          0          0          0          0          0   Posted-interrupt notification event
+ NPI:          0          0          0          0          0          0          0          0   Nested posted-interrupt event
+ PIW:          0          0          0          0          0          0          0          0   Posted-interrupt wakeup event

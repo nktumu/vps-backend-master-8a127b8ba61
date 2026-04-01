@@ -1,0 +1,81 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "workload.json",
+    "title": "Workload",
+    "description": "JSON schema for a Workload.  Workloads contain subschemas for the SLP and Workload Type.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Name of workload.\n"
+        },
+        "preset_type_id": {
+            "description": "Selects a preset Workload Type.  Preset Workload Types are queryable. User shall only provide one of 'preset-type-id' or 'type-definition'.",
+            "type": "string",
+            "enum": [
+                "DB2",
+                "Exchange",
+                "File System (Large Files)",
+                "File System (Small Files)",
+                "File System (Typical)",
+                "Image Files",
+                "Informix-On-Bar",
+                "MySQL",
+                "NCR-Teradata",
+                "NDMP (Large Files)",
+                "NDMP (Small Files)",
+                "NDMP (Typical)",
+                "Notes",
+                "Oracle",
+                "SAP",
+                "SharePoint",
+                "Splunk",
+                "SQL",
+                "SyBase",
+                "VMware"
+            ]
+        },
+        "custom_type": {
+            "description": "User provided custom Workload Type.  This allows users to deviate from the preset Workload Types",
+            "$ref": "workload_type.json"
+        },
+        "size": {
+            "description": "Size of workload.  This must be the FETB (front-end terabyte) for the workload across all of the clients.",
+            "$ref": "util.json#/$defs/size"
+        },
+        "number_of_clients": {
+            "type": "integer",
+            "description": "Number of clients associated with the workload."
+        },
+        "workload_isolation": {
+            "type": "boolean",
+            "default": "false"
+        },
+        "universal_share": {
+            "type": "boolean",
+            "default": "false"
+        },
+        "slp": {
+            "$ref": "slp.json"
+        }
+    },
+    "required": [
+        "name",
+        "size",
+        "number_of_clients",
+        "slp"
+    ],
+    "oneOf": [
+        {
+            "required": [
+                "preset_type_id"
+            ]
+        },
+        {
+            "required": [
+                "custom_type"
+            ]
+        }
+    ]
+}

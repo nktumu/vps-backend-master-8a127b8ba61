@@ -1,0 +1,59 @@
+localhost_disk_0
+Device:    localhost_disk_0
+devicetag: localhost_disk_0
+type:      auto
+info:      format=none
+flags:     online ready private autoconfig invalid
+pubpaths:  block=/dev/vx/dmp/localhost_disk_0 char=/dev/vx/rdmp/localhost_disk_0
+guid:      -
+udid:      ATA%5FSATA%20SSD%5FDISKS%5F0000000000000000
+site:      -
+Multipathing information:
+numpaths:   1
+sda      	state=enabled
+----
+localhost_disk_1
+Device:    localhost_disk_1
+devicetag: localhost_disk_1
+type:      auto
+info:      format=LVM
+flags:    LVM online ready private autoconfig invalid
+pubpaths:  block=/dev/vx/dmp/localhost_disk_1 char=/dev/vx/rdmp/localhost_disk_1
+guid:      -
+udid:      Intel%5FRMS3HC080%5FDISKS%5F600605B00C953960243F705D15F533B5
+site:      -
+Multipathing information:
+numpaths:   1
+sdb      	state=enabled
+----
+localhost_disk_2
+Device:    localhost_disk_2
+devicetag: localhost_disk_2
+type:      auto
+hostid:    eagappflx027
+disk:      name=B00C953960243F705D15FB7EE1 id=1570262665.10.eagappflx027
+group:     name=vxosdg id=1570262666.12.eagappflx027
+info:      format=cdsdisk,privoffset=208,pubslice=3,privslice=3
+flags:     online ready private autoconfig noautoimport imported
+pubpaths:  block=/dev/vx/dmp/localhost_disk_2s3 char=/dev/vx/rdmp/localhost_disk_2s3
+guid:      {bf67dae4-e746-11e9-8f67-5693c6687ca2}
+udid:      Intel%5FRMS3HC080%5FDISKS%5F600605B00C953960243F705D15FB7EE1
+site:      -
+version:   4.1
+iosize:    min=512 (bytes) max=128 (blocks)
+public:    slice=3 offset=65744 len=31253839568 disk_offset=48
+private:   slice=3 offset=208 len=65536 disk_offset=48
+update:    time=1570262839 seqno=0.17
+ssb:       actual_seqno=0.0
+headers:   0 240
+configs:   count=1 len=51360
+logs:      count=1 len=4096
+Defined regions:
+ config   priv 000048-000239[000192]: copy=01 offset=000000 enabled
+ config   priv 000256-051423[051168]: copy=01 offset=000192 enabled
+ log      priv 051424-055519[004096]: copy=01 offset=000000 enabled
+ lockrgn  priv 055520-055663[000144]: part=00 offset=000000
+Multipathing information:
+numpaths:   1
+sdc      	state=enabled
+----
